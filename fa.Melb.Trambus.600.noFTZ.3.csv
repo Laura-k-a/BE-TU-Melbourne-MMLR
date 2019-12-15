@@ -1,0 +1,41 @@
+
+Call:
+factanal(x = fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
+
+Uniquenesses:
+           X1_Emp            X3_Pop       X5_Dwelling         X6_ActDen       X7_PropComm 
+            0.005             0.059             0.011             0.005             0.602 
+     X8_RetailEmp        X9_Balance    X11_HousingDiv X12_Intersections           X13_PBN 
+            0.372             0.702             0.471             0.288             0.854 
+    X14_DestScore     X15_DestCount       X16_DistCBD        X18_ACNear         X24_Urban 
+            0.591             0.499             0.317             0.763             0.944 
+       X26_Access 
+            0.292 
+
+Loadings:
+                  Factor1 Factor2 Factor3
+X1_Emp             0.922          -0.382 
+X3_Pop             0.845           0.472 
+X5_Dwelling        0.840           0.533 
+X6_ActDen          0.990           0.117 
+X7_PropComm        0.494   0.360  -0.155 
+X8_RetailEmp       0.710   0.115  -0.333 
+X9_Balance        -0.108  -0.290   0.450 
+X11_HousingDiv     0.381   0.552   0.280 
+X12_Intersections  0.699   0.462         
+X13_PBN            0.157   0.344         
+X14_DestScore      0.433   0.402   0.246 
+X15_DestCount      0.455   0.541         
+X16_DistCBD       -0.661  -0.455  -0.198 
+X18_ACNear        -0.321  -0.342  -0.128 
+X24_Urban                          0.237 
+X26_Access         0.757   0.363         
+
+               Factor1 Factor2 Factor3
+SS loadings      6.175   1.778   1.272
+Proportion Var   0.386   0.111   0.080
+Cumulative Var   0.386   0.497   0.577
+
+Test of the hypothesis that 3 factors are sufficient.
+The chi square statistic is 1117.89 on 75 degrees of freedom.
+The p-value is 0.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000162 
