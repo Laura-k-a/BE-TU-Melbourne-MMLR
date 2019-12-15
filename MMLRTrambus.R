@@ -106,7 +106,25 @@ fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 8,
 
 capture.output(fa.Melb.Trambus.600.noFTZ,file ="fa.Melb.Trambus.600.noFTZ.3.csv")
 #basically, no solutions available. Try:
-#minres method
+#minres, wls method
 #removing variables with high uniqueness
 
+#Step 1.4 Using different method for extracting factors (distinct from maximum likelihood method)
+install.packages("GPArotation")
+library(GPArotation)
+
+#try weighted least squares (requires use of the package "fa")
+fa.Melb.Trambus.600.noFTZ.wls.varimax<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="varimax", fm="wls")
+fa.Melb.Trambus.600.noFTZ.wls.varimax
+
+fa.Melb.Trambus.600.noFTZ.wls<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="none", fm="wls")
+fa.Melb.Trambus.600.noFTZ.wls
+
+fa.Melb.Trambus.600.noFTZ.wls.promax<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="promax", fm="wls")
+fa.Melb.Trambus.600.noFTZ.wls.promax
+
+#reject since Tucker Lewis index of reliability is low
+fa.Melb.Trambus.600.noFTZ.minres<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 2, rotate="none", fm="minres")
+fa.Melb.Trambus.600.noFTZ.minres
+#reject since poor fit indices. Any higher numebr of factors leads to the error that "weights are incorrect"
 
