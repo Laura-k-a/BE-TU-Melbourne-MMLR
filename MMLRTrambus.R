@@ -138,3 +138,32 @@ fa.Melb.Trambus.600.noFTZ.varimax
 
 
 capture.output(fa.Melb.Trambus.600.noFTZ.varimax,file ="fa.Melb.Trambus.600.noFTZ.varimax.csv")
+
+
+#Try using different weighting procedures
+  #minres, wls method
+  #Step 1.4 Using different method for extracting factors (distinct from maximum likelihood method)
+install.packages("GPArotation")
+library(GPArotation)
+
+fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(19, 21:22, 25, 28:29, 31:33,43)]
+fa.data.Melb.Trambus.600.noFTZ<-as.matrix(fa.data.Melb.Trambus.600.noFTZ)
+
+#try weighted least squares (requires use of the package "fa")
+fa.Melb.Trambus.600.noFTZ.wls.varimax<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="varimax", fm="wls")
+fa.Melb.Trambus.600.noFTZ.wls.varimax
+
+fa.Melb.Trambus.600.noFTZ.wls<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="none", fm="wls")
+fa.Melb.Trambus.600.noFTZ.wls
+
+fa.Melb.Trambus.600.noFTZ.wls.promax<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="promax", fm="wls")
+fa.Melb.Trambus.600.noFTZ.wls.promax
+
+#reject since Tucker Lewis index of reliability is low
+
+fa.Melb.Trambus.600.noFTZ.minres<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 4, rotate="none", fm="minres")
+fa.Melb.Trambus.600.noFTZ.minres
+
+fa.Melb.Trambus.600.noFTZ.minres<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="none", fm="minres")
+fa.Melb.Trambus.600.noFTZ.minres
+#unsure how to intepret using alternate weighting procedures; although hypothesis tests seem to perform favourably using the minres approach
