@@ -67,79 +67,73 @@ Melb.Trambus.600<- MMLR_Data[ which(MMLR_Data$Type=='Trambus'
                                                   & MMLR_Data$Radius=='600'
                                                   & MMLR_Data$Set_Sample_ID == 'C'),]
 
-#NB:  'Set ID' refers to the method of defining the 'walk catchment'. 'D' (distributed) means     catchments were separately calculated for the tram and bus points, then merged. 'C' (centroid) means the geographic centroid of the points was first found, and the catchment estimated from there. Data corresponding to the 'centroid' (C) catchments is used in this analysis. 
+#Assumption 1:  'Set ID' refers to the method of defining the 'walk catchment'. 'D' (distributed) means     catchments were separately calculated for the tram and bus points, then merged. 'C' (centroid) means the geographic centroid of the points was first found, and the catchment estimated from there. Data corresponding to the 'centroid' (C) catchments is used in this analysis. 
 
 #Variables to include in the factor analysis (columns 18 - 43)
 #X1_Emp+X2_EmpDen+X3_Pop+X4_PopDen+X5_Dwelling+X6_ActDen+X7_PropComm+X8_RetailEmp+X9_Balance+X10_Entropy+X11_HousingDiv+X12_Intersections+X13_PBN+X14_DestScore+X15_DestCount+X16_DistCBD+X17_ACCount+X18_ACNear+X19_FTZ+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+X24_Urban+X25_Rural+X26_Access
 
 #form a data frame that comprises only the variables to be included in the factor analysis (built environment)
 #include variables measured on a count or continuous scale. This means "FTZ" and "AC_Count" should be excluded. Also "rural" is 0 for almost all responses, so exclude
-fa.Melb.Trambus.600<-Melb.Trambus.600[,c(18:33,35,41,43)]
-
-#Step 1.1 Determine how many factors
-Melb.Trambus.600.pca <- princomp(fa.Melb.Trambus.600)
-summary(Melb.Trambus.600.pca)
-plot(Melb.Trambus.600.pca)
-
-#only one component. High correlation. How to fix? Could be a case of influential outliers. Try removing stops in the free tram fare zone.
-#Could also be singularity - reove population density and employment density, the sum of which is equal to activity density. This is why 'population' and 'employment' in absolute values have also been included in the dataset
 
 
-Melb.Trambus.600.noFTZ<- Melb.Trambus.600[ which(Melb.Trambus.600$X19_FTZ=='0'),]
-
-fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(18,20,22:33,35,41,43)]
-Melb.Trambus.600.pca.noFTZ <- princomp(fa.data.Melb.Trambus.600.noFTZ)
-summary(Melb.Trambus.600.pca.noFTZ)
-plot(Melb.Trambus.600.pca.noFTZ)
+#Step 1.1 Specify number of factors. Based on theory, will try four or five factors, consituting 1) density 2) diversity 3) design 4) regional accessibility and 5) local accessibility/walkability (Ewing and Cevero 2010, Voulgaris et al. 2017)
+fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "none")
 
 
-#scree plot suggests there is only one principal component. Proceed to factor analysis and work backwards with unique factors removed. 
+#system is computationally singular --> remove #Population and employment densities, which together constitute activity density (Keep absolute values of population and employment)
+fa.data.Melb.Trambus.600<-fa.data.Melb.Trambus.600[-c(2,4)]
+fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "none")
 
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
-fa.Melb.Trambus.600.noFTZ
+#Unable to otopimise with 4 factors, try 5
+fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 5, rotation = "none")
+fa.Melb.Trambus.600
+#high uniqueness for: housing diversity, PBN (i.e. bicycle connectivity), destination score, AC near. Remove these
 
-#eliminate high uniqueness variables (>0.6): Entropy, PBN, AC Near, Urban and rerun PCA
-fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(18,20,22:26, 28:29, 31:33,43)]
-Melb.Trambus.600.pca.noFTZ <- princomp(fa.data.Melb.Trambus.600.noFTZ)
-summary(Melb.Trambus.600.pca.noFTZ)
-plot(Melb.Trambus.600.pca.noFTZ)
-#still suggesting one component
+fa.data.Melb.Trambus.600<-fa.data.Melb.Trambus.600[-c(9, 11, 12, 15)]
+fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 5, rotation = "none")
+fa.Melb.Trambus.600
 
-#rerun factor analysis on 3 factors with high uniqueness variables removed
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
-fa.Melb.Trambus.600.noFTZ
+#loadings on factor 4 and 5 are low, so try 3-factor solution
+fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 3, rotation = "none")
 
-#propr commercial has high uniqueness, try removing
-fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(18,20,22:23, 25:26, 28:29, 31:33,43)]
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
-fa.Melb.Trambus.600.noFTZ
+#unable to optimise. Try 4
+fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "none")
+fa.Melb.Trambus.600
 
-#balance has high uniqueness, try removing
-fa.data.Melb.Trambus.600.noFTZ<-fa.data.Melb.Trambus.600.noFTZ[-c(6)]
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
-fa.Melb.Trambus.600.noFTZ
+#solution doesn't make a lot of sense and loadings on 3 and 4 still low. Try different rotation methods. 
+fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "promax")
+fa.Melb.Trambus.600.promax
+#solution is intepretable, but some residual cross-loading. See if possible to get a solution with 3 factors
 
-#remaingin factors seem to be appropriate for the factor solution. Rerun PCA
-Melb.Trambus.600.pca.noFTZ <- princomp(fa.data.Melb.Trambus.600.noFTZ)
-summary(Melb.Trambus.600.pca.noFTZ)
-plot(Melb.Trambus.600.pca.noFTZ)
-#still suggesting only one component
+fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 3, rotation = "promax") 
+#unable to optimise. 
 
-#try two-factor solution
+#2 factors?
+fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 2, rotation = "promax") 
+fa.Melb.Trambus.600.promax
 
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 2, rotation = "none")
-fa.Melb.Trambus.600.noFTZ
+fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 2, rotation = "varimax")
+fa.Melb.Trambus.600.promax
 
-#housing div has high uniqueness --> remove
-fa.data.Melb.Trambus.600.noFTZ<-fa.data.Melb.Trambus.600.noFTZ[-c(6)]
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
-fa.Melb.Trambus.600.noFTZ
+#entropy and urban have high uniqueness --> would need to remove. Also some cross-loadig. Explore alternate rotations before removing these. 
 
-fa.Melb.Trambus.600.noFTZ.varimax<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "varimax")
-fa.Melb.Trambus.600.noFTZ.varimax
+fa.Melb.Trambus.600.varimax<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "varimax") 
+fa.Melb.Trambus.600.varimax
 
-fa.Melb.Trambus.600.noFTZ.promax<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "promax")
-fa.Melb.Trambus.600.noFTZ.promax
-#this solution seems to make sense. But what is the implication of the PCA only suggesting one principle component?
+#proportion commercial cross-loads. Try 3-factor solution
+fa.Melb.Trambus.600.varimax<-factanal(fa.data.Melb.Trambus.600, factors = 3, rotation = "varimax")
+fa.Melb.Trambus.600.varimax
+#cannot optimise.
 
-#try running with minres. 
+
+#try removing prop comm
+fa.data.Melb.Trambus.600<-fa.data.Melb.Trambus.600[-c(5)]
+fa.Melb.Trambus.600.varimax<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "varimax") 
+fa.Melb.Trambus.600.varimax
+#this introduces even more cross loading. Try promax rotation
+fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "promax")
+fa.Melb.Trambus.600.promax
+#yields a logical solution with no cross-loading. Retain as best solution with FTZ in the sample
+
+capture.output(fa.Melb.Trambus.600.promax, file = "fa.Melb.Trambus.600.promax.4.csv")
+
