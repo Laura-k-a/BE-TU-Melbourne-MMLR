@@ -72,68 +72,56 @@ Melb.Trambus.600<- MMLR_Data[ which(MMLR_Data$Type=='Trambus'
 #Variables to include in the factor analysis (columns 18 - 43)
 #X1_Emp+X2_EmpDen+X3_Pop+X4_PopDen+X5_Dwelling+X6_ActDen+X7_PropComm+X8_RetailEmp+X9_Balance+X10_Entropy+X11_HousingDiv+X12_Intersections+X13_PBN+X14_DestScore+X15_DestCount+X16_DistCBD+X17_ACCount+X18_ACNear+X19_FTZ+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+X24_Urban+X25_Rural+X26_Access
 
-#form a data frame that comprises only the variables to be included in the factor analysis (built environment)
+#Step 1.1: form a data frame that comprises only the variables to be included in the factor analysis (built environment)
 #include variables measured on a count or continuous scale. This means "FTZ" and "AC_Count" should be excluded. Also "rural" is 0 for almost all responses, so exclude
+fa.data.Melb.Trambus.600<-Melb.Trambus.600[,c(18:26, 28:33,35,41,43)]
 
+#Step 1.2: Specify number of factors. Based on theory, will try four or five factors, consituting 1) density 2) diversity 3) design 4) regional accessibility and 5) local accessibility/walkability (Ewing and Cevero 2010, Voulgaris et al. 2017)
 
-#Step 1.1 Specify number of factors. Based on theory, will try four or five factors, consituting 1) density 2) diversity 3) design 4) regional accessibility and 5) local accessibility/walkability (Ewing and Cevero 2010, Voulgaris et al. 2017)
+#Step 1.3 run factor analysis
 fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "none")
-
-
 #system is computationally singular --> remove #Population and employment densities, which together constitute activity density (Keep absolute values of population and employment)
-fa.data.Melb.Trambus.600<-fa.data.Melb.Trambus.600[-c(2,4)]
-fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "none")
 
-#Unable to otopimise with 4 factors, try 5
-fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 5, rotation = "none")
-fa.Melb.Trambus.600
-#high uniqueness for: housing diversity, PBN (i.e. bicycle connectivity), destination score, AC near. Remove these
-
-fa.data.Melb.Trambus.600<-fa.data.Melb.Trambus.600[-c(9, 11, 12, 15)]
+fa.data.Melb.Trambus.600<-Melb.Trambus.600[,c(18, 20, 23:26, 28:33,35,41,43)]
 fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 5, rotation = "none")
 fa.Melb.Trambus.600
 
-#loadings on factor 4 and 5 are low, so try 3-factor solution
-fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 3, rotation = "none")
+#high uniqueness for: PBN (i.e. bicycle connectivity), AC near, urban Remove these
 
-#unable to optimise. Try 4
+fa.data.Melb.Trambus.600<-Melb.Trambus.600[,c(18, 20, 23:26, 28:29,31:33,43)]
+fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 5, rotation = "none")
+fa.Melb.Trambus.600
+
+#loadings on factor 4 and 5 are low
+#try 4-factor solution
 fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "none")
 fa.Melb.Trambus.600
 
-#solution doesn't make a lot of sense and loadings on 3 and 4 still low. Try different rotation methods. 
 fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "promax")
 fa.Melb.Trambus.600.promax
-#solution is intepretable, but some residual cross-loading. See if possible to get a solution with 3 factors
 
-fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 3, rotation = "promax") 
-#unable to optimise. 
-
-#2 factors?
-fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 2, rotation = "promax") 
-fa.Melb.Trambus.600.promax
-
-fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 2, rotation = "varimax")
-fa.Melb.Trambus.600.promax
-
-#entropy and urban have high uniqueness --> would need to remove. Also some cross-loadig. Explore alternate rotations before removing these. 
-
-fa.Melb.Trambus.600.varimax<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "varimax") 
+fa.Melb.Trambus.600.varimax<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "varimax")
 fa.Melb.Trambus.600.varimax
 
-#proportion commercial cross-loads. Try 3-factor solution
+#loading on factor 4 low, so try 3-factor solution
+fa.Melb.Trambus.600<-factanal(fa.data.Melb.Trambus.600, factors = 3, rotation = "none")
+fa.Melb.Trambus.600
+
+fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 3, rotation = "promax")
+fa.Melb.Trambus.600.promax
+#balance and destination count cross-loading
+
 fa.Melb.Trambus.600.varimax<-factanal(fa.data.Melb.Trambus.600, factors = 3, rotation = "varimax")
 fa.Melb.Trambus.600.varimax
-#cannot optimise.
 
+#varimax solution is good; except destination count cross-loading. Try removing dest count. 
+fa.data.Melb.Trambus.600<-Melb.Trambus.600[,c(18, 20, 23:26, 28:29,31,33,43)]
 
-#try removing prop comm
-fa.data.Melb.Trambus.600<-fa.data.Melb.Trambus.600[-c(5)]
-fa.Melb.Trambus.600.varimax<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "varimax") 
+fa.Melb.Trambus.600.varimax<-factanal(fa.data.Melb.Trambus.600, factors = 3, rotation = "varimax")
 fa.Melb.Trambus.600.varimax
-#this introduces even more cross loading. Try promax rotation
-fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "promax")
+#now the only item loading on factor 3 is balance, and population density is cross-loading. 
+
+fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 3, rotation = "promax")
 fa.Melb.Trambus.600.promax
-#yields a logical solution with no cross-loading. Retain as best solution with FTZ in the sample
-
-capture.output(fa.Melb.Trambus.600.promax, file = "fa.Melb.Trambus.600.promax.4.csv")
-
+#pop den and balance do not fit solution
+#essentially, solution is unstable, try examinig for outliers. 
