@@ -79,7 +79,7 @@ fa.data.Melb.Trambus.600<-Melb.Trambus.600[,c(18:26, 28:33,35,41,43)]
 #Step 1.2: Specify number of factors. Based on theory, will try four or five factors, consituting 1) density 2) diversity 3) design 4) regional accessibility and 5) local accessibility/walkability (Ewing and Cevero 2010, Voulgaris et al. 2017)
 
 #Step 1.3 run factor analysis
-#syste is computationally singular as activity density is the sum of population and employment density --> do not include these in the factor matrix. 
+#system is computationally singular as activity density is the sum of population and employment density --> do not include these in the factor matrix. 
 #No stable solution found
 #Could be outliers. Evaluation of outliers, based on standardized scores (z-scores) revealed 17 "high" outliers, all of which were in Melbourne's free tram fare zone, suggesting systematic bias.
 #Assumption 2: Remove all stops that lie within the free tram zone. 
@@ -97,34 +97,44 @@ fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 4,
 fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
 fa.Melb.Trambus.600.noFTZ
 
-#The null hypothesis is that the number of factors specified is sufficient. If p<0.05, then need to reject the null hypothesis in favour of adding more factors. 
-#In this case, the hypothesis test suggests 3 factors is insufficient to explain the variance in the solution. Try 6-factor solution
+#Step 1.4 Remove variables with high uniqueness values: proportion commerical, balance, PBN, ACNear, urban
+fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(18, 20, 22:23, 25, 28:29, 31:33,43)]
+fa.data.Melb.Trambus.600.noFTZ<-as.matrix(fa.data.Melb.Trambus.600.noFTZ)
+fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
+fa.Melb.Trambus.600.noFTZ
 
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 6, rotation = "none") #unable to optimise
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 7, rotation = "none") #unable to optimise
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 8, rotation = "none") #unable to optimise
+#Step 1.5 Evaluate the adequacy of the number of factors
+#Methods for evaluating the appropriateness of the solution include (O'Hair 2014, pp. 106-109):
+# important that their is a conceptual explanation for the identified factors
+# a prior criterion: when number of factors is pre-specified
+# cumulative variance >0.6
 
-capture.output(fa.Melb.Trambus.600.noFTZ,file ="fa.Melb.Trambus.600.noFTZ.3.csv")
-#basically, no solutions available. Try:
-#minres, wls method
-#removing variables with high uniqueness
+#sufficient variance explained and factors make sense. However, factor 3 does not have any variables loaded on it. Try rotation
 
-#Step 1.4 Using different method for extracting factors (distinct from maximum likelihood method)
-install.packages("GPArotation")
-library(GPArotation)
+fa.Melb.Trambus.600.noFTZ.promax<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "promax")
+fa.Melb.Trambus.600.noFTZ.promax
+#cross-loading of activity density
 
-#try weighted least squares (requires use of the package "fa")
-fa.Melb.Trambus.600.noFTZ.wls.varimax<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="varimax", fm="wls")
-fa.Melb.Trambus.600.noFTZ.wls.varimax
+#try varimax
+fa.Melb.Trambus.600.noFTZ.promax<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "varimax")
+fa.Melb.Trambus.600.noFTZ.varimax
 
-fa.Melb.Trambus.600.noFTZ.wls<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="none", fm="wls")
-fa.Melb.Trambus.600.noFTZ.wls
+#activity density is still cross-loading, so try removing it. Substitute employment and population density, since they will no longer be singluar. 
 
-fa.Melb.Trambus.600.noFTZ.wls.promax<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="promax", fm="wls")
-fa.Melb.Trambus.600.noFTZ.wls.promax
+fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(19, 21:22, 25, 28:29, 31:33,43)]
+fa.data.Melb.Trambus.600.noFTZ<-as.matrix(fa.data.Melb.Trambus.600.noFTZ)
+fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
+fa.Melb.Trambus.600.noFTZ
 
-#reject since Tucker Lewis index of reliability is low
-fa.Melb.Trambus.600.noFTZ.minres<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 2, rotate="none", fm="minres")
-fa.Melb.Trambus.600.noFTZ.minres
-#reject since poor fit indices. Any higher numebr of factors leads to the error that "weights are incorrect"
+fa.Melb.Trambus.600.noFTZ.promax<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "promax")
+fa.Melb.Trambus.600.noFTZ.promax
 
+fa.Melb.Trambus.600.noFTZ.varimax<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "varimax")
+fa.Melb.Trambus.600.noFTZ.varimax
+
+#varimax yields best solution - exlain 74.2% of variance. 
+
+#note that the null hypothesis that 3 factors is sufficient is rejected. However, hypothesis testing has less significance in factor analysis than intepretability. 
+
+
+capture.output(fa.Melb.Trambus.600.noFTZ.varimax,file ="fa.Melb.Trambus.600.noFTZ.varimax.csv")
