@@ -78,6 +78,11 @@ fa.data.Melb.Trambus.600<-Melb.Trambus.600[,c(18:26, 28:33,35,41,43)]
 
 #Step 1.2: Specify number of factors. Based on theory, will try four or five factors, consituting 1) density 2) diversity 3) design 4) regional accessibility and 5) local accessibility/walkability (Ewing and Cevero 2010, Voulgaris et al. 2017)
 
+##Methods for evaluating the appropriateness of the solution include (O'Hair 2014, pp. 106-109):
+# important that their is a conceptual explanation for the identified factors
+# a prior criterion: when number of factors is pre-specified
+# cumulative variance >0.6
+
 #Step 1.3 run factor analysis
 #system is computationally singular as activity density is the sum of population and employment density --> do not include these in the factor matrix. 
 #No stable solution found
@@ -90,6 +95,10 @@ Melb.Trambus.600.noFTZ<- Melb.Trambus.600[ which(Melb.Trambus.600$X19_FTZ=='0'),
 #Step 1.3 run factor analysis
 fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(18, 20, 22:26, 28:33,35,41,43)]
 fa.data.Melb.Trambus.600.noFTZ<-as.matrix(fa.data.Melb.Trambus.600.noFTZ)
+
+fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
+fa.Melb.Trambus.600.noFTZ
+
 fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 5, rotation = "none")
 #unable to optimize. Try 4-factor solution
 fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 4, rotation = "none")
@@ -104,10 +113,6 @@ fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3,
 fa.Melb.Trambus.600.noFTZ
 
 #Step 1.5 Evaluate the adequacy of the number of factors
-#Methods for evaluating the appropriateness of the solution include (O'Hair 2014, pp. 106-109):
-# important that their is a conceptual explanation for the identified factors
-# a prior criterion: when number of factors is pre-specified
-# cumulative variance >0.6
 
 #sufficient variance explained and factors make sense. However, factor 3 does not have any variables loaded on it. Try rotation
 
@@ -133,37 +138,30 @@ fa.Melb.Trambus.600.noFTZ.varimax<-factanal(fa.data.Melb.Trambus.600.noFTZ, fact
 fa.Melb.Trambus.600.noFTZ.varimax
 
 #varimax yields best solution - exlain 74.2% of variance. 
+capture.output(fa.Melb.Trambus.600.noFTZ.varimax,file ="fa.Melb.Trambus.600.noFTZ.varimax.3.csv")
 
 #note that the null hypothesis that 3 factors is sufficient is rejected. However, hypothesis testing has less significance in factor analysis than intepretability. 
+#However, scree plot suggests only 2 factors have eigenvalues greater than 1:
+#How many factors to extract?
+install.packages("nFactors")
+library(nFactors)
+ev <- eigen(cor(fa.data.Melb.Trambus.600.noFTZ)) # get eigenvalues
+ap <- parallel(subject=nrow(fa.data.Melb.Trambus.600.noFTZ),var=ncol(fa.data.Melb.Trambus.600.noFTZ),
+               rep=100,cent=.05)
+nS <- nScree(x=ev$values, aparallel=ap$eigen$qevpea)
+plotnScree(nS)
+
+fa.Melb.Trambus.600.noFTZ.varimax<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 2, rotation = "varimax")
+fa.Melb.Trambus.600.noFTZ.varimax
 
 
-capture.output(fa.Melb.Trambus.600.noFTZ.varimax,file ="fa.Melb.Trambus.600.noFTZ.varimax.csv")
+#retail employment and destination score no longer fit the solution. Probably retain the 3-factor solution, but retest with these two variables removed just in case. 
+fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(19, 21:22, 28:29, 32:33,43)]
 
+fa.Melb.Trambus.600.noFTZ.varimax.2<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 2, rotation = "varimax")
+fa.Melb.Trambus.600.noFTZ.varimax.2
+#solution is less interpretable than the 3-factor solution, so will preference the 3-factor solution over 2-factor solution despite low loading on third factor. 
 
-#Try using different weighting procedures
-  #minres, wls method
-  #Step 1.4 Using different method for extracting factors (distinct from maximum likelihood method)
-install.packages("GPArotation")
-library(GPArotation)
+#Step 1.5 estimate factor scores and add to the master data frame
 
-fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(19, 21:22, 25, 28:29, 31:33,43)]
-fa.data.Melb.Trambus.600.noFTZ<-as.matrix(fa.data.Melb.Trambus.600.noFTZ)
-
-#try weighted least squares (requires use of the package "fa")
-fa.Melb.Trambus.600.noFTZ.wls.varimax<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="varimax", fm="wls")
-fa.Melb.Trambus.600.noFTZ.wls.varimax
-
-fa.Melb.Trambus.600.noFTZ.wls<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="none", fm="wls")
-fa.Melb.Trambus.600.noFTZ.wls
-
-fa.Melb.Trambus.600.noFTZ.wls.promax<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="promax", fm="wls")
-fa.Melb.Trambus.600.noFTZ.wls.promax
-
-#reject since Tucker Lewis index of reliability is low
-
-fa.Melb.Trambus.600.noFTZ.minres<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 4, rotate="none", fm="minres")
-fa.Melb.Trambus.600.noFTZ.minres
-
-fa.Melb.Trambus.600.noFTZ.minres<-fa(fa.data.Melb.Trambus.600.noFTZ, nfactors = 3, rotate="none", fm="minres")
-fa.Melb.Trambus.600.noFTZ.minres
-#unsure how to intepret using alternate weighting procedures; although hypothesis tests seem to perform favourably using the minres approach
+#Step 2. Check for colinearity among variables
