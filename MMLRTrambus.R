@@ -89,13 +89,14 @@ Melb.Trambus.600.noFTZ<- Melb.Trambus.600[ which(Melb.Trambus.600$X19_FTZ=='0'),
 
 #Step 1.3 run factor analysis
 fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(18, 20, 22:26, 28:33,35,41,43)]
+fa.data.Melb.Trambus.600.noFTZ<-as.matrix(fa.data.Melb.Trambus.600.noFTZ)
 fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 5, rotation = "none")
 #unable to optimize. Try 4-factor solution
 fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 4, rotation = "none")
 #unable to optimize. Try 3-factor solution
 fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
 fa.Melb.Trambus.600.noFTZ
-capture.output(fa.Melb.Trambus.600.noFTZ,file ="fa.Melb.Trambus.600.noFTZ.3.csv")
+
 #The null hypothesis is that the number of factors specified is sufficient. If p<0.05, then need to reject the null hypothesis in favour of adding more factors. 
 #In this case, the hypothesis test suggests 3 factors is insufficient to explain the variance in the solution. Try 6-factor solution
 
@@ -103,14 +104,9 @@ fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 6,
 fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 7, rotation = "none") #unable to optimise
 fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 8, rotation = "none") #unable to optimise
 
-#basically, no solutions available. Try minres. 
+capture.output(fa.Melb.Trambus.600.noFTZ,file ="fa.Melb.Trambus.600.noFTZ.3.csv")
+#basically, no solutions available. Try:
+#minres method
+#removing variables with high uniqueness
 
-#Step 1.3 extract scores for the sample
-fa.Melb.Trambus.600.promax<-factanal(fa.data.Melb.Trambus.600, factors = 4, rotation = "promax", scores = "regression")
-head(fa.Melb.Trambus.600.promax$scores)
-fa.Melb.Trambus.600.promax
 
-fs <- factor.scores(fa.data.Melb.Trambus.600, fa.Melb.Trambus.600.promax)     #obtain factor scores
-fs <- fs$scores                 #get the columns of factor scores for each case
-Melb.Trambus.600 <- cbind(fa.data.Melb.Trambus.600,fs)           #append factor scores to dataset (you can also 
-#use merge()) or something comparable.
