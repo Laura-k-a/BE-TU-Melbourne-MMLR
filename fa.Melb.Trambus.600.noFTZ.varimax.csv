@@ -3,10 +3,10 @@ Call:
 factanal(x = fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "varimax")
 
 Uniquenesses:
-        X2_EmpDen         X4_PopDen       X5_Dwelling      X8_RetailEmp    X11_HousingDiv 
-            0.005             0.005             0.016             0.384             0.498 
-X12_Intersections     X14_DestScore     X15_DestCount       X16_DistCBD        X26_Access 
-            0.290             0.555             0.498             0.310             0.242 
+        X2_EmpDen         X4_PopDen       X5_Dwelling      X8_RetailEmp    X11_HousingDiv X12_Intersections 
+            0.005             0.005             0.016             0.384             0.498             0.290 
+    X14_DestScore     X15_DestCount       X16_DistCBD        X26_Access 
+            0.555             0.498             0.310             0.242 
 
 Loadings:
                   Factor1 Factor2 Factor3
