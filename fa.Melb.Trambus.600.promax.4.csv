@@ -1,0 +1,42 @@
+
+Call:
+factanal(x = fa.data.Melb.Trambus.600, factors = 4, rotation = "promax")
+
+Uniquenesses:
+           X1_Emp            X3_Pop       X5_Dwelling         X6_ActDen      X8_RetailEmp 
+            0.005             0.032             0.005             0.005             0.024 
+       X9_Balance       X10_Entropy X12_Intersections     X15_DestCount       X16_DistCBD 
+            0.400             0.456             0.200             0.281             0.283 
+        X24_Urban        X26_Access 
+            0.005             0.162 
+
+Loadings:
+                  Factor1 Factor2 Factor3 Factor4
+X1_Emp             0.925                   0.122 
+X3_Pop                     0.449           0.634 
+X5_Dwelling                0.386           0.723 
+X6_ActDen          0.742   0.129           0.297 
+X8_RetailEmp       0.938                   0.103 
+X9_Balance        -0.829           0.117   0.274 
+X10_Entropy       -0.306   0.350  -0.564         
+X12_Intersections          0.852                 
+X15_DestCount      0.371   0.588   0.213         
+X16_DistCBD        0.140  -0.869          -0.123 
+X24_Urban         -0.181   0.161   1.053         
+X26_Access         0.101   0.804                 
+
+               Factor1 Factor2 Factor3 Factor4
+SS loadings      3.285   2.995   1.499   1.159
+Proportion Var   0.274   0.250   0.125   0.097
+Cumulative Var   0.274   0.523   0.648   0.745
+
+Factor Correlations:
+        Factor1 Factor2 Factor3 Factor4
+Factor1   1.000  0.1749   0.475 -0.6009
+Factor2   0.175  1.0000   0.315  0.0944
+Factor3   0.475  0.3153   1.000 -0.4395
+Factor4  -0.601  0.0944  -0.439  1.0000
+
+Test of the hypothesis that 4 factors are sufficient.
+The chi square statistic is 800.06 on 24 degrees of freedom.
+The p-value is 0.00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000201 
