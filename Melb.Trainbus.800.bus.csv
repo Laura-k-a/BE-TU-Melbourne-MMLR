@@ -1,0 +1,25 @@
+
+Call:
+lm(formula = ln_Bus ~ X13_PBN + X17_ACCount + X18_ACNear + X20_LOS + 
+    X26_Access + Factor2, data = Melb.Trainbus.800.NO.rd2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3487 -0.5063  0.1158  0.6672  1.8273 
+
+Coefficients:
+                Estimate Standardized   Std. Error t value             Pr(>|t|)    
+(Intercept)  1.892065157  0.000000000  0.469696364   4.028           0.00009893 ***
+X13_PBN      0.006491775  0.069841775  0.006849300   0.948               0.3451    
+X17_ACCount  1.313125164  0.388773896  0.269144395   4.879           0.00000331 ***
+X18_ACNear   0.000254439  0.185262501  0.000107495   2.367               0.0195 *  
+X20_LOS      0.012250458  0.643117431  0.001132337  10.819 < 0.0000000000000002 ***
+X26_Access  -0.000002640 -0.183773804  0.000001043  -2.530               0.0127 *  
+Factor2      0.226272873  0.137972266  0.092859898   2.437               0.0163 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.9858 on 120 degrees of freedom
+Multiple R-squared:  0.6671,	Adjusted R-squared:  0.6505 
+F-statistic: 40.09 on 6 and 120 DF,  p-value: < 0.00000000000000022
+

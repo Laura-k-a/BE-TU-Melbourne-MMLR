@@ -1,0 +1,40 @@
+
+Call:
+factanal(x = fa.data.Melb.Trainbus.800.NO, factors = 3, rotation = "promax")
+
+Uniquenesses:
+        X2_EmpDen         X4_PopDen       X5_Dwelling       X7_PropComm 
+            0.211             0.005             0.022             0.557 
+     X8_RetailEmp        X9_Balance       X10_Entropy    X11_HousingDiv 
+            0.005             0.325             0.471             0.471 
+X12_Intersections     X15_DestCount       X16_DistCBD 
+            0.338             0.478             0.557 
+
+Loadings:
+                  Factor1 Factor2 Factor3
+X2_EmpDen          0.395   0.641         
+X4_PopDen          0.982   0.106  -0.345 
+X5_Dwelling        0.972   0.119  -0.289 
+X7_PropComm                        0.647 
+X8_RetailEmp       0.234   0.894         
+X9_Balance         0.291  -0.740  -0.268 
+X10_Entropy       -0.307           0.717 
+X11_HousingDiv     0.720                 
+X12_Intersections  0.768  -0.125   0.258 
+X15_DestCount      0.611           0.333 
+X16_DistCBD       -0.645                 
+
+               Factor1 Factor2 Factor3
+SS loadings      4.197   1.820   1.403
+Proportion Var   0.382   0.165   0.128
+Cumulative Var   0.382   0.547   0.675
+
+Factor Correlations:
+        Factor1 Factor2 Factor3
+Factor1   1.000  -0.357  -0.212
+Factor2  -0.357   1.000   0.398
+Factor3  -0.212   0.398   1.000
+
+Test of the hypothesis that 3 factors are sufficient.
+The chi square statistic is 68.12 on 25 degrees of freedom.
+The p-value is 0.0000073 

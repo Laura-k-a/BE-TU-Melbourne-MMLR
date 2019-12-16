@@ -1,0 +1,54 @@
+Response ln_Train :
+
+Call:
+lm(formula = ln_Train ~ X13_PBN + X17_ACCount + X18_ACNear + 
+    X20_LOS + X26_Access + Factor2, data = Melb.Trainbus.800.NO.rd2)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.91162 -0.24603  0.01846  0.24306  0.80384 
+
+Coefficients:
+                 Estimate    Std. Error t value             Pr(>|t|)    
+(Intercept)  6.3162003314  0.1957248550  32.271 < 0.0000000000000002 ***
+X13_PBN      0.0065481340  0.0028541379   2.294              0.02351 *  
+X17_ACCount  0.3103079100  0.1121538334   2.767              0.00656 ** 
+X18_ACNear   0.0000013523  0.0000447935   0.030              0.97597    
+X20_LOS      0.0047094872  0.0004718505   9.981 < 0.0000000000000002 ***
+X26_Access  -0.0000002481  0.0000004347  -0.571              0.56921    
+Factor2      0.0059246116  0.0386951901   0.153              0.87857    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.4108 on 120 degrees of freedom
+Multiple R-squared:  0.6229,	Adjusted R-squared:  0.604 
+F-statistic: 33.03 on 6 and 120 DF,  p-value: < 0.00000000000000022
+
+
+Response ln_Bus :
+
+Call:
+lm(formula = ln_Bus ~ X13_PBN + X17_ACCount + X18_ACNear + X20_LOS + 
+    X26_Access + Factor2, data = Melb.Trainbus.800.NO.rd2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3487 -0.5063  0.1158  0.6672  1.8273 
+
+Coefficients:
+                Estimate   Std. Error t value             Pr(>|t|)    
+(Intercept)  1.892065157  0.469696364   4.028           0.00009893 ***
+X13_PBN      0.006491775  0.006849300   0.948               0.3451    
+X17_ACCount  1.313125164  0.269144395   4.879           0.00000331 ***
+X18_ACNear   0.000254439  0.000107495   2.367               0.0195 *  
+X20_LOS      0.012250458  0.001132337  10.819 < 0.0000000000000002 ***
+X26_Access  -0.000002640  0.000001043  -2.530               0.0127 *  
+Factor2      0.226272873  0.092859898   2.437               0.0163 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.9858 on 120 degrees of freedom
+Multiple R-squared:  0.6671,	Adjusted R-squared:  0.6505 
+F-statistic: 40.09 on 6 and 120 DF,  p-value: < 0.00000000000000022
+
+
