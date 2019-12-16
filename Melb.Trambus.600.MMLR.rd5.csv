@@ -1,0 +1,60 @@
+Response ln_Tram :
+
+Call:
+lm(formula = ln_Tram ~ X7_PropComm + X9_Balance + X10_Entropy + 
+    X13_PBN + X20_LOS + X24_Urban + Fac_1 + Fac_2 + Fac_3, data = Melb.Trambus.600.noFTZ.rd5)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.85326 -0.29581  0.02672  0.34284  1.52423 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  4.3991657  0.7039227   6.250 1.32e-09 ***
+X7_PropComm  0.4642027  0.2706177   1.715 0.087256 .  
+X9_Balance   0.7822743  0.5235915   1.494 0.136153    
+X10_Entropy  4.1083750  1.1322245   3.629 0.000332 ***
+X13_PBN     -0.0197738  0.0027244  -7.258 3.03e-12 ***
+X20_LOS      0.0070123  0.0006236  11.245  < 2e-16 ***
+X24_Urban    0.8387087  0.3578992   2.343 0.019723 *  
+Fac_1        0.1090907  0.0385368   2.831 0.004939 ** 
+Fac_2        0.3056143  0.0569926   5.362 1.58e-07 ***
+Fac_3        0.1684747  0.0343976   4.898 1.54e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.5421 on 318 degrees of freedom
+Multiple R-squared:  0.593,	Adjusted R-squared:  0.5815 
+F-statistic: 51.48 on 9 and 318 DF,  p-value: < 2.2e-16
+
+
+Response ln_Bus :
+
+Call:
+lm(formula = ln_Bus ~ X7_PropComm + X9_Balance + X10_Entropy + 
+    X13_PBN + X20_LOS + X24_Urban + Fac_1 + Fac_2 + Fac_3, data = Melb.Trambus.600.noFTZ.rd5)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.7303 -0.8015  0.1437  0.9239  2.9155 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -6.289032   1.669536  -3.767 0.000197 ***
+X7_PropComm  1.146972   0.641841   1.787 0.074889 .  
+X9_Balance   5.461188   1.241834   4.398 1.49e-05 ***
+X10_Entropy  3.699726   2.685366   1.378 0.169253    
+X13_PBN      0.002449   0.006462   0.379 0.704962    
+X20_LOS      0.012965   0.001479   8.766  < 2e-16 ***
+X24_Urban    2.728236   0.848851   3.214 0.001443 ** 
+Fac_1       -0.127135   0.091400  -1.391 0.165207    
+Fac_2        0.423619   0.135173   3.134 0.001886 ** 
+Fac_3       -0.109599   0.081583  -1.343 0.180097    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.286 on 318 degrees of freedom
+Multiple R-squared:  0.3294,	Adjusted R-squared:  0.3104 
+F-statistic: 17.36 on 9 and 318 DF,  p-value: < 2.2e-16
+
+
