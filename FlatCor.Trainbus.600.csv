@@ -1,137 +1,137 @@
-                  row            column           cor            p
-1              ln_Bus          ln_Train  6.724206e-01 0.000000e+00
-2              ln_Bus       X7_PropComm  4.415117e-01 8.311703e-08
-3            ln_Train       X7_PropComm  3.197808e-01 1.563657e-04
-4              ln_Bus       X10_Entropy  3.385434e-01 5.914570e-05
-5            ln_Train       X10_Entropy  1.879254e-01 2.905964e-02
-6         X7_PropComm       X10_Entropy  4.484021e-01 4.927114e-08
-7              ln_Bus X12_Intersections  1.822655e-01 3.436205e-02
-8            ln_Train X12_Intersections  3.173079e-01 1.769173e-04
-9         X7_PropComm X12_Intersections  1.722650e-01 4.572887e-02
-10        X10_Entropy X12_Intersections  1.056206e-01 2.227673e-01
-11             ln_Bus       X17_ACCount  4.669495e-01 1.137014e-08
-12           ln_Train       X17_ACCount  3.696962e-01 1.019881e-05
-13        X7_PropComm       X17_ACCount  3.495397e-01 3.247614e-05
-14        X10_Entropy       X17_ACCount  2.298954e-01 7.311105e-03
-15  X12_Intersections       X17_ACCount  1.465673e-01 8.982980e-02
-16             ln_Bus        X18_ACNear -4.020925e-01 1.337654e-06
-17           ln_Train        X18_ACNear -6.003598e-01 1.398881e-14
-18        X7_PropComm        X18_ACNear -3.180763e-01 1.702771e-04
-19        X10_Entropy        X18_ACNear -1.706248e-01 4.786329e-02
-20  X12_Intersections        X18_ACNear -3.371479e-01 6.371947e-05
-21        X17_ACCount        X18_ACNear -5.828473e-01 1.203482e-13
-22             ln_Bus           X20_LOS  7.013890e-01 0.000000e+00
-23           ln_Train           X20_LOS  6.832855e-01 0.000000e+00
-24        X7_PropComm           X20_LOS  4.173736e-01 4.750193e-07
-25        X10_Entropy           X20_LOS  3.064576e-01 3.003652e-04
-26  X12_Intersections           X20_LOS  3.546346e-01 2.441235e-05
-27        X17_ACCount           X20_LOS  4.052759e-01 1.082691e-06
-28         X18_ACNear           X20_LOS -4.431527e-01 7.346180e-08
-29             ln_Bus       X21_PropFTE -1.745476e-01 4.289079e-02
-30           ln_Train       X21_PropFTE -1.889581e-01 2.817142e-02
-31        X7_PropComm       X21_PropFTE -1.345884e-01 1.196311e-01
-32        X10_Entropy       X21_PropFTE -3.949828e-02 6.492254e-01
-33  X12_Intersections       X21_PropFTE  2.754477e-01 1.223099e-03
-34        X17_ACCount       X21_PropFTE -1.112377e-01 1.989893e-01
-35         X18_ACNear       X21_PropFTE  2.150854e-02 8.044350e-01
-36            X20_LOS       X21_PropFTE -2.011987e-01 1.928574e-02
-37             ln_Bus        X22_MedInc -1.817411e-01 3.489223e-02
-38           ln_Train        X22_MedInc -1.434284e-01 9.699828e-02
-39        X7_PropComm        X22_MedInc -2.054854e-01 1.680736e-02
-40        X10_Entropy        X22_MedInc -1.330106e-01 1.240697e-01
-41  X12_Intersections        X22_MedInc  3.413452e-01 5.087519e-05
-42        X17_ACCount        X22_MedInc -4.611207e-02 5.953673e-01
-43         X18_ACNear        X22_MedInc -4.085490e-02 6.380168e-01
-44            X20_LOS        X22_MedInc -2.299395e-01 7.299568e-03
-45        X21_PropFTE        X22_MedInc  6.894582e-01 0.000000e+00
-46             ln_Bus      X23_MeanSize -5.963819e-02 4.920187e-01
-47           ln_Train      X23_MeanSize -6.272131e-02 4.698697e-01
-48        X7_PropComm      X23_MeanSize -1.443608e-01 9.482326e-02
-49        X10_Entropy      X23_MeanSize -1.213916e-01 1.607602e-01
-50  X12_Intersections      X23_MeanSize -3.513531e-01 2.935556e-05
-51        X17_ACCount      X23_MeanSize -1.674481e-01 5.223308e-02
-52         X18_ACNear      X23_MeanSize  2.032162e-01 1.808250e-02
-53            X20_LOS      X23_MeanSize -3.588135e-02 6.794894e-01
-54        X21_PropFTE      X23_MeanSize -3.986031e-01 1.682379e-06
-55         X22_MedInc      X23_MeanSize -4.403004e-01 9.101189e-08
-56             ln_Bus         X24_Urban  1.125423e-01 1.937393e-01
-57           ln_Train         X24_Urban  2.372007e-01 5.604888e-03
-58        X7_PropComm         X24_Urban -3.127426e-01 2.215970e-04
-59        X10_Entropy         X24_Urban -4.245981e-01 2.859402e-07
-60  X12_Intersections         X24_Urban  2.456513e-01 4.081284e-03
-61        X17_ACCount         X24_Urban  1.514884e-01 7.944672e-02
-62         X18_ACNear         X24_Urban -1.987017e-01 2.087023e-02
-63            X20_LOS         X24_Urban  1.221420e-01 1.581695e-01
-64        X21_PropFTE         X24_Urban  5.603789e-03 9.485680e-01
-65         X22_MedInc         X24_Urban  1.486002e-01 8.541666e-02
-66       X23_MeanSize         X24_Urban -1.718866e-01 4.621404e-02
-67             ln_Bus        X26_Access  2.732300e-02 7.530872e-01
-68           ln_Train        X26_Access  1.861870e-01 3.060862e-02
-69        X7_PropComm        X26_Access  1.445013e-01 9.449897e-02
-70        X10_Entropy        X26_Access -5.104536e-02 5.565579e-01
-71  X12_Intersections        X26_Access  5.461516e-01 7.319034e-12
-72        X17_ACCount        X26_Access -9.202452e-02 2.884446e-01
-73         X18_ACNear        X26_Access -1.744258e-01 4.303840e-02
-74            X20_LOS        X26_Access  7.031901e-02 4.176877e-01
-75        X21_PropFTE        X26_Access  3.924589e-01 2.503445e-06
-76         X22_MedInc        X26_Access  4.845066e-01 2.612278e-09
-77       X23_MeanSize        X26_Access -2.862235e-01 7.643685e-04
-78          X24_Urban        X26_Access  1.207954e-01 1.628409e-01
-79             ln_Bus           Factor1  1.923497e-01 2.541520e-02
-80           ln_Train           Factor1  1.262235e-01 1.446233e-01
-81        X7_PropComm           Factor1  2.779870e-01 1.096678e-03
-82        X10_Entropy           Factor1  2.908384e-01 6.214025e-04
-83  X12_Intersections           Factor1  1.259935e-01 1.453627e-01
-84        X17_ACCount           Factor1 -4.611923e-02 5.953100e-01
-85         X18_ACNear           Factor1 -1.701215e-01 4.853472e-02
-86            X20_LOS           Factor1  1.794591e-01 3.728073e-02
-87        X21_PropFTE           Factor1  1.405208e-01 1.040352e-01
-88         X22_MedInc           Factor1  6.117489e-02 4.809105e-01
-89       X23_MeanSize           Factor1 -1.345870e-01 1.196349e-01
-90          X24_Urban           Factor1 -1.026121e-01 2.362994e-01
-91         X26_Access           Factor1  3.674734e-01 1.163309e-05
-92             ln_Bus           Factor2 -1.892755e-01 2.790311e-02
-93           ln_Train           Factor2 -6.066748e-02 4.845634e-01
-94        X7_PropComm           Factor2 -2.921133e-01 5.864901e-04
-95        X10_Entropy           Factor2 -4.270628e-01 2.398224e-07
-96  X12_Intersections           Factor2  4.353345e-01 1.315390e-07
-97        X17_ACCount           Factor2 -1.395191e-01 1.065502e-01
-98         X18_ACNear           Factor2 -8.440929e-02 3.303715e-01
-99            X20_LOS           Factor2 -1.306555e-01 1.309297e-01
-100       X21_PropFTE           Factor2  4.000662e-01 1.528647e-06
-101        X22_MedInc           Factor2  4.056108e-01 1.058736e-06
-102      X23_MeanSize           Factor2 -2.980981e-01 4.454775e-04
-103         X24_Urban           Factor2  4.858112e-01 2.334028e-09
-104        X26_Access           Factor2  4.801600e-01 3.788992e-09
-105           Factor1           Factor2 -5.570686e-15 1.000000e+00
-106            ln_Bus           Factor3  8.128082e-02 3.486723e-01
-107          ln_Train           Factor3  3.967694e-01 1.895849e-06
-108       X7_PropComm           Factor3  1.055183e-01 2.232183e-01
-109       X10_Entropy           Factor3 -3.996452e-02 6.453643e-01
-110 X12_Intersections           Factor3  2.786223e-01 1.066976e-03
-111       X17_ACCount           Factor3 -1.133569e-02 8.961801e-01
-112        X18_ACNear           Factor3 -3.712040e-01 9.322761e-06
-113           X20_LOS           Factor3  8.937104e-02 3.026318e-01
-114       X21_PropFTE           Factor3 -2.672975e-02 7.582812e-01
-115        X22_MedInc           Factor3  2.190300e-01 1.070133e-02
-116      X23_MeanSize           Factor3  3.003598e-02 7.294784e-01
-117         X24_Urban           Factor3 -3.417519e-02 6.939485e-01
-118        X26_Access           Factor3  4.888512e-01 1.791934e-09
-119           Factor1           Factor3 -5.147209e-15 1.000000e+00
-120           Factor2           Factor3 -4.715237e-15 1.000000e+00
-121            ln_Bus           Factor4  4.322034e-01 1.654265e-07
-122          ln_Train           Factor4  4.234660e-01 3.098556e-07
-123       X7_PropComm           Factor4  2.828506e-01 8.873167e-04
-124       X10_Entropy           Factor4  1.678748e-01 5.162757e-02
-125 X12_Intersections           Factor4  4.411742e-01 8.524849e-08
-126       X17_ACCount           Factor4  5.508979e-01 4.423573e-12
-127        X18_ACNear           Factor4 -3.752976e-01 7.288834e-06
-128           X20_LOS           Factor4  5.316038e-01 3.264500e-11
-129       X21_PropFTE           Factor4 -1.172265e-01 1.757181e-01
-130        X22_MedInc           Factor4  4.092952e-02 6.374026e-01
-131      X23_MeanSize           Factor4 -3.781609e-01 6.123938e-06
-132         X24_Urban           Factor4  3.161015e-01 1.878300e-04
-133        X26_Access           Factor4  8.298615e-02 3.386190e-01
-134           Factor1           Factor4 -3.292764e-15 1.000000e+00
-135           Factor2           Factor4 -3.177858e-15 1.000000e+00
-136           Factor3           Factor4 -2.750702e-15 1.000000e+00
+,row,column,cor,p
+1,ln_Bus,ln_Train,6.72E-01,0.00E+00
+2,ln_Bus,X7_PropComm,4.42E-01,8.31E-08
+3,ln_Train,X7_PropComm,3.20E-01,1.56E-04
+4,ln_Bus,X10_Entropy,3.39E-01,5.91E-05
+5,ln_Train,X10_Entropy,1.88E-01,2.91E-02
+6,X7_PropComm,X10_Entropy,4.48E-01,4.93E-08
+7,ln_Bus,X12_Intersections,1.82E-01,3.44E-02
+8,ln_Train,X12_Intersections,3.17E-01,1.77E-04
+9,X7_PropComm,X12_Intersections,1.72E-01,4.57E-02
+10,X10_Entropy,X12_Intersections,1.06E-01,2.23E-01
+11,ln_Bus,X17_ACCount,4.67E-01,1.14E-08
+12,ln_Train,X17_ACCount,3.70E-01,1.02E-05
+13,X7_PropComm,X17_ACCount,3.50E-01,3.25E-05
+14,X10_Entropy,X17_ACCount,2.30E-01,7.31E-03
+15,X12_Intersections,X17_ACCount,1.47E-01,8.98E-02
+16,ln_Bus,X18_ACNear,-4.02E-01,1.34E-06
+17,ln_Train,X18_ACNear,-6.00E-01,1.40E-14
+18,X7_PropComm,X18_ACNear,-3.18E-01,1.70E-04
+19,X10_Entropy,X18_ACNear,-1.71E-01,4.79E-02
+20,X12_Intersections,X18_ACNear,-3.37E-01,6.37E-05
+21,X17_ACCount,X18_ACNear,-5.83E-01,1.20E-13
+22,ln_Bus,X20_LOS,7.01E-01,0.00E+00
+23,ln_Train,X20_LOS,6.83E-01,0.00E+00
+24,X7_PropComm,X20_LOS,4.17E-01,4.75E-07
+25,X10_Entropy,X20_LOS,3.06E-01,3.00E-04
+26,X12_Intersections,X20_LOS,3.55E-01,2.44E-05
+27,X17_ACCount,X20_LOS,4.05E-01,1.08E-06
+28,X18_ACNear,X20_LOS,-4.43E-01,7.35E-08
+29,ln_Bus,X21_PropFTE,-1.75E-01,4.29E-02
+30,ln_Train,X21_PropFTE,-1.89E-01,2.82E-02
+31,X7_PropComm,X21_PropFTE,-1.35E-01,1.20E-01
+32,X10_Entropy,X21_PropFTE,-3.95E-02,6.49E-01
+33,X12_Intersections,X21_PropFTE,2.75E-01,1.22E-03
+34,X17_ACCount,X21_PropFTE,-1.11E-01,1.99E-01
+35,X18_ACNear,X21_PropFTE,2.15E-02,8.04E-01
+36,X20_LOS,X21_PropFTE,-2.01E-01,1.93E-02
+37,ln_Bus,X22_MedInc,-1.82E-01,3.49E-02
+38,ln_Train,X22_MedInc,-1.43E-01,9.70E-02
+39,X7_PropComm,X22_MedInc,-2.05E-01,1.68E-02
+40,X10_Entropy,X22_MedInc,-1.33E-01,1.24E-01
+41,X12_Intersections,X22_MedInc,3.41E-01,5.09E-05
+42,X17_ACCount,X22_MedInc,-4.61E-02,5.95E-01
+43,X18_ACNear,X22_MedInc,-4.09E-02,6.38E-01
+44,X20_LOS,X22_MedInc,-2.30E-01,7.30E-03
+45,X21_PropFTE,X22_MedInc,6.89E-01,0.00E+00
+46,ln_Bus,X23_MeanSize,-5.96E-02,4.92E-01
+47,ln_Train,X23_MeanSize,-6.27E-02,4.70E-01
+48,X7_PropComm,X23_MeanSize,-1.44E-01,9.48E-02
+49,X10_Entropy,X23_MeanSize,-1.21E-01,1.61E-01
+50,X12_Intersections,X23_MeanSize,-3.51E-01,2.94E-05
+51,X17_ACCount,X23_MeanSize,-1.67E-01,5.22E-02
+52,X18_ACNear,X23_MeanSize,2.03E-01,1.81E-02
+53,X20_LOS,X23_MeanSize,-3.59E-02,6.79E-01
+54,X21_PropFTE,X23_MeanSize,-3.99E-01,1.68E-06
+55,X22_MedInc,X23_MeanSize,-4.40E-01,9.10E-08
+56,ln_Bus,X24_Urban,1.13E-01,1.94E-01
+57,ln_Train,X24_Urban,2.37E-01,5.60E-03
+58,X7_PropComm,X24_Urban,-3.13E-01,2.22E-04
+59,X10_Entropy,X24_Urban,-4.25E-01,2.86E-07
+60,X12_Intersections,X24_Urban,2.46E-01,4.08E-03
+61,X17_ACCount,X24_Urban,1.51E-01,7.94E-02
+62,X18_ACNear,X24_Urban,-1.99E-01,2.09E-02
+63,X20_LOS,X24_Urban,1.22E-01,1.58E-01
+64,X21_PropFTE,X24_Urban,5.60E-03,9.49E-01
+65,X22_MedInc,X24_Urban,1.49E-01,8.54E-02
+66,X23_MeanSize,X24_Urban,-1.72E-01,4.62E-02
+67,ln_Bus,X26_Access,2.73E-02,7.53E-01
+68,ln_Train,X26_Access,1.86E-01,3.06E-02
+69,X7_PropComm,X26_Access,1.45E-01,9.45E-02
+70,X10_Entropy,X26_Access,-5.10E-02,5.57E-01
+71,X12_Intersections,X26_Access,5.46E-01,7.32E-12
+72,X17_ACCount,X26_Access,-9.20E-02,2.88E-01
+73,X18_ACNear,X26_Access,-1.74E-01,4.30E-02
+74,X20_LOS,X26_Access,7.03E-02,4.18E-01
+75,X21_PropFTE,X26_Access,3.92E-01,2.50E-06
+76,X22_MedInc,X26_Access,4.85E-01,2.61E-09
+77,X23_MeanSize,X26_Access,-2.86E-01,7.64E-04
+78,X24_Urban,X26_Access,1.21E-01,1.63E-01
+79,ln_Bus,Factor1,1.92E-01,2.54E-02
+80,ln_Train,Factor1,1.26E-01,1.45E-01
+81,X7_PropComm,Factor1,2.78E-01,1.10E-03
+82,X10_Entropy,Factor1,2.91E-01,6.21E-04
+83,X12_Intersections,Factor1,1.26E-01,1.45E-01
+84,X17_ACCount,Factor1,-4.61E-02,5.95E-01
+85,X18_ACNear,Factor1,-1.70E-01,4.85E-02
+86,X20_LOS,Factor1,1.79E-01,3.73E-02
+87,X21_PropFTE,Factor1,1.41E-01,1.04E-01
+88,X22_MedInc,Factor1,6.12E-02,4.81E-01
+89,X23_MeanSize,Factor1,-1.35E-01,1.20E-01
+90,X24_Urban,Factor1,-1.03E-01,2.36E-01
+91,X26_Access,Factor1,3.67E-01,1.16E-05
+92,ln_Bus,Factor2,-1.89E-01,2.79E-02
+93,ln_Train,Factor2,-6.07E-02,4.85E-01
+94,X7_PropComm,Factor2,-2.92E-01,5.86E-04
+95,X10_Entropy,Factor2,-4.27E-01,2.40E-07
+96,X12_Intersections,Factor2,4.35E-01,1.32E-07
+97,X17_ACCount,Factor2,-1.40E-01,1.07E-01
+98,X18_ACNear,Factor2,-8.44E-02,3.30E-01
+99,X20_LOS,Factor2,-1.31E-01,1.31E-01
+100,X21_PropFTE,Factor2,4.00E-01,1.53E-06
+101,X22_MedInc,Factor2,4.06E-01,1.06E-06
+102,X23_MeanSize,Factor2,-2.98E-01,4.45E-04
+103,X24_Urban,Factor2,4.86E-01,2.33E-09
+104,X26_Access,Factor2,4.80E-01,3.79E-09
+105,Factor1,Factor2,-5.57E-15,1.00E+00
+106,ln_Bus,Factor3,8.13E-02,3.49E-01
+107,ln_Train,Factor3,3.97E-01,1.90E-06
+108,X7_PropComm,Factor3,1.06E-01,2.23E-01
+109,X10_Entropy,Factor3,-4.00E-02,6.45E-01
+110,X12_Intersections,Factor3,2.79E-01,1.07E-03
+111,X17_ACCount,Factor3,-1.13E-02,8.96E-01
+112,X18_ACNear,Factor3,-3.71E-01,9.32E-06
+113,X20_LOS,Factor3,8.94E-02,3.03E-01
+114,X21_PropFTE,Factor3,-2.67E-02,7.58E-01
+115,X22_MedInc,Factor3,2.19E-01,1.07E-02
+116,X23_MeanSize,Factor3,3.00E-02,7.29E-01
+117,X24_Urban,Factor3,-3.42E-02,6.94E-01
+118,X26_Access,Factor3,4.89E-01,1.79E-09
+119,Factor1,Factor3,-5.15E-15,1.00E+00
+120,Factor2,Factor3,-4.72E-15,1.00E+00
+121,ln_Bus,Factor4,4.32E-01,1.65E-07
+122,ln_Train,Factor4,4.23E-01,3.10E-07
+123,X7_PropComm,Factor4,2.83E-01,8.87E-04
+124,X10_Entropy,Factor4,1.68E-01,5.16E-02
+125,X12_Intersections,Factor4,4.41E-01,8.52E-08
+126,X17_ACCount,Factor4,5.51E-01,4.42E-12
+127,X18_ACNear,Factor4,-3.75E-01,7.29E-06
+128,X20_LOS,Factor4,5.32E-01,3.26E-11
+129,X21_PropFTE,Factor4,-1.17E-01,1.76E-01
+130,X22_MedInc,Factor4,4.09E-02,6.37E-01
+131,X23_MeanSize,Factor4,-3.78E-01,6.12E-06
+132,X24_Urban,Factor4,3.16E-01,1.88E-04
+133,X26_Access,Factor4,8.30E-02,3.39E-01
+134,Factor1,Factor4,-3.29E-15,1.00E+00
+135,Factor2,Factor4,-3.18E-15,1.00E+00
+136,Factor3,Factor4,-2.75E-15,1.00E+00
