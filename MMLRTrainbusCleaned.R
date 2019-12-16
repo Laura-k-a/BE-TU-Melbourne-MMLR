@@ -155,7 +155,16 @@ Trainbus_fs_800.NO <- Trainbus_fs_800.NO$scores           #get the columns of fa
 Melb.Trainbus.800.NO<- cbind(Melb.Trainbus.800.NO,Trainbus_fs_800.NO) #append factor scores to dataset (you can also #use merge()) or something comparable.
 
 #Step 2 estimate covariance of the outcome variables 
+cov_Trainbus_ln<-cor.test(Melb.Trainbus.800.NO$ln_Train, Melb.Trainbus.800.NO$ln_Bus, method = "pearson", conf.level = 0.95)
+cov_Trainbus_ln
 
+capture.output(cov_Trainbus_ln,file="cov_Trainbus_ln.NO.txt")
+
+#covariance of the linear ridership
+cov_Trainbus<-cor.test(Melb.Trainbus.800.NO$Patronage_Train, Melb.Trainbus.800.NO$Updated_Patronage_Bus, method = "pearson", conf.level = 0.95)
+cov_Trainbus
+
+capture.output(cov_Trainbus,file="cov_Trainbus.NO.txt")
 
 #step 3 Check for multicolinearity
 Melb.Trainbus.800.NO.VIF<-vif(lm(ln_Train ~ X13_PBN+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+X24_Urban+X26_Access+Factor1+Factor2+Factor3, data =Melb.Trainbus.800.NO))
