@@ -1,0 +1,12 @@
+
+	Pearson's product-moment correlation
+
+data:  Melb.Trainbus.800.NO$ln_Train and Melb.Trainbus.800.NO$ln_Bus
+t = 11.794, df = 130, p-value < 0.00000000000000022
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.6248485 0.7924750
+sample estimates:
+      cor 
+0.7189582 
+

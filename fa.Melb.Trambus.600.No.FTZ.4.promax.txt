@@ -1,0 +1,46 @@
+
+Call:
+factanal(x = fa.data.Melb.Trambus.600.NoFTZ, factors = 4, rotation = "promax")
+
+Uniquenesses:
+        X2_EmpDen         X4_PopDen       X5_Dwelling       X7_PropComm 
+            0.290             0.005             0.016             0.532 
+     X8_RetailEmp        X9_Balance       X10_Entropy    X11_HousingDiv 
+            0.005             0.334             0.435             0.591 
+X12_Intersections     X14_DestScore     X15_DestCount       X16_DistCBD 
+            0.251             0.516             0.367             0.379 
+        X24_Urban        X26_Access 
+            0.005             0.285 
+
+Loadings:
+                  Factor1 Factor2 Factor3 Factor4
+X2_EmpDen          0.104   0.347   0.596         
+X4_PopDen          0.119   0.919                 
+X5_Dwelling        0.108   0.919                 
+X7_PropComm        0.520  -0.118   0.344         
+X8_RetailEmp               0.185   0.996         
+X9_Balance                 0.370  -0.817         
+X10_Entropy        0.337  -0.154          -0.643 
+X11_HousingDiv     0.658          -0.147         
+X12_Intersections  0.708   0.145                 
+X14_DestScore      0.736          -0.134   0.130 
+X15_DestCount      0.967  -0.222           0.194 
+X16_DistCBD       -0.604  -0.250                 
+X24_Urban          0.229                   1.043 
+X26_Access         0.658   0.229          -0.100 
+
+               Factor1 Factor2 Factor3 Factor4
+SS loadings      3.689   2.211   2.193   1.584
+Proportion Var   0.263   0.158   0.157   0.113
+Cumulative Var   0.263   0.421   0.578   0.691
+
+Factor Correlations:
+        Factor1 Factor2 Factor3 Factor4
+Factor1  1.0000  0.0266   0.244  -0.592
+Factor2  0.0266  1.0000  -0.324   0.229
+Factor3  0.2443 -0.3241   1.000  -0.479
+Factor4 -0.5922  0.2288  -0.479   1.000
+
+Test of the hypothesis that 4 factors are sufficient.
+The chi square statistic is 475.95 on 41 degrees of freedom.
+The p-value is 0.00000000000000000000000000000000000000000000000000000000000000000000000000197 
