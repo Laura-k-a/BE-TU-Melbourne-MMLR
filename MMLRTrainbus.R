@@ -62,45 +62,92 @@ row.names(MMLR_Data) <- MMLR_Data[,c(3)]
 #subsetting for mode in the census of all eligible stops
 
 
-Melb.Trambus.600<- MMLR_Data[ which(MMLR_Data$Type=='Trambus'
+Melb.Trainbus.600<- MMLR_Data[ which(MMLR_Data$Type=='Trainbus'
                                     & MMLR_Data$Radius=='600'
                                     & MMLR_Data$Set_Sample_ID == 'C'),]
 
+Melb.Trainbus.800<- MMLR_Data[ which(MMLR_Data$Type=='Trainbus'
+                                     & MMLR_Data$Radius=='800'
+                                     & MMLR_Data$Set_Sample_ID == 'C'),]
+
 #Assumption 1:  'Set ID' refers to the method of defining the 'walk catchment'. 'D' (distributed) means     catchments were separately calculated for the tram and bus points, then merged. 'C' (centroid) means the geographic centroid of the points was first found, and the catchment estimated from there. Data corresponding to the 'centroid' (C) catchments is used in this analysis. 
 
-#Variables to include in the factor analysis (columns 18 - 43)
-#X1_Emp+X2_EmpDen+X3_Pop+X4_PopDen+X5_Dwelling+X6_ActDen+X7_PropComm+X8_RetailEmp+X9_Balance+X10_Entropy+X11_HousingDiv+X12_Intersections+X13_PBN+X14_DestScore+X15_DestCount+X16_DistCBD+X17_ACCount+X18_ACNear+X19_FTZ+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+X24_Urban+X25_Rural+X26_Access
+#Variables to include in the factor analysis (columns 19, 21,22, 24 - 43)
+#X2_EmpDen+X4_PopDen+X5_Dwelling+X7_PropComm+X8_RetailEmp+X9_Balance+X10_Entropy+X11_HousingDiv+X12_Intersections+X13_PBN+X14_DestScore+X15_DestCount+X16_DistCBD+X17_ACCount+X18_ACNear+X19_FTZ+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+X24_Urban+X25_Rural+X26_Access
 
 #Step 1.1: form a data frame that comprises only the variables to be included in the factor analysis (built environment)
 #include variables measured on a count or continuous scale. This means "FTZ" and "AC_Count" should be excluded. Also "rural" is 0 for almost all responses, so exclude
-fa.data.Melb.Trambus.600<-Melb.Trambus.600[,c(18:26, 28:33,35,41,43)]
+fa.data.Melb.Trainbus.800<-Melb.Trainbus.800[,c(19, 21, 22, 24:26, 28:33,35,41,43)]
+fa.data.Melb.Trainbus.600<-Melb.Trainbus.600[,c(19, 21, 22, 24:26, 28:33,35,41,43)]
 
 #Step 1.2: Specify number of factors. Based on theory, will try four or five factors, consituting 1) density 2) diversity 3) design 4) regional accessibility and 5) local accessibility/walkability (Ewing and Cevero 2010, Voulgaris et al. 2017)
 
+#alternatively, check scree plot
+install.packages("nFactors")
+library(nFactors)
+ev_trainbus_600 <- eigen(cor(fa.data.Melb.Trainbus.600))
+ev_trainbus_800 <- eigen(cor(fa.data.Melb.Trainbus.800))# get eigenvalues
+ap_trainbus_600 <- parallel(subject=nrow(fa.data.Melb.Trainbus.600),var=ncol(fa.data.Melb.Trainbus.600),
+               rep=100,cent=.05)
+nS_trainbus_600 <- nScree(x=ev_trainbus_600$values, aparallel=ap_trainbus_600$eigen$qevpea)
+
+ap_trainbus_800 <- parallel(subject=nrow(fa.data.Melb.Trainbus.800),var=ncol(fa.data.Melb.Trainbus.800),
+                            rep=100,cent=.05)
+nS_trainbus_800 <- nScree(x=ev_trainbus_800$values, aparallel=ap_trainbus_800$eigen$qevpea)
+
+plotnScree(nS_trainbus_800) #3 eigenvalues
+plotnScree(nS_trainbus_600) #3/4 eigenvalues
+
+
 #Step 1.3 run factor analysis
-#system is computationally singular as activity density is the sum of population and employment density --> do not include these in the factor matrix. 
-#No stable solution found
-#Could be outliers. Evaluation of outliers, based on standardized scores (z-scores) revealed 17 "high" outliers, all of which were in Melbourne's free tram fare zone, suggesting systematic bias.
-#Assumption 2: Remove all stops that lie within the free tram zone. 
-# Could be singularity - remove population density and employment density, the sum of which is equal to activity density. This is why 'population' and 'employment' in absolute values have also been included in the dataset
+#800
+fa.Melb.Trainbus.800.3<-factanal(fa.data.Melb.Trainbus.800, factors = 3, rotation = "none")
+fa.Melb.Trainbus.800.3
+#high uniqueness: proportion commerical, PBN, DestScore, ACNear ,Urban
 
-Melb.Trambus.600.noFTZ<- Melb.Trambus.600[ which(Melb.Trambus.600$X19_FTZ=='0'),]
+#600
+fa.Melb.Trainbus.600.3<-factanal(fa.data.Melb.Trainbus.600, factors = 3, rotation = "none")
+fa.Melb.Trainbus.600.3
+#high uniqueness: proportion commerical, intersections, PBN, DistCBD, ACNear, Urban
 
-#Step 1.3 run factor analysis
-fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(18, 20, 22:26, 28:33,35,41,43)]
-fa.data.Melb.Trambus.600.noFTZ<-as.matrix(fa.data.Melb.Trambus.600.noFTZ)
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 5, rotation = "none")
-#unable to optimize. Try 4-factor solution
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 4, rotation = "none")
-#unable to optimize. Try 3-factor solution
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
-fa.Melb.Trambus.600.noFTZ
+fa.Melb.Trainbus.600.4<-factanal(fa.data.Melb.Trainbus.600, factors = 4, rotation = "none")
+fa.Melb.Trainbus.600.4
+#high uniqueness: proportion commerical, ACNear, urban
 
-#Step 1.4 Remove variables with high uniqueness values: proportion commerical, balance, PBN, ACNear, urban
-fa.data.Melb.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(18, 20, 22:23, 25, 28:29, 31:33,43)]
-fa.data.Melb.Trambus.600.noFTZ<-as.matrix(fa.data.Melb.Trambus.600.noFTZ)
-fa.Melb.Trambus.600.noFTZ<-factanal(fa.data.Melb.Trambus.600.noFTZ, factors = 3, rotation = "none")
-fa.Melb.Trambus.600.noFTZ
+#Step 1.4 Remove variables with high uniqueness values: proportion commerical, ACNear, urban
+fa.data.Melb.Trainbus.800<-Melb.Trainbus.800[,c(19, 21, 22, 25:26, 28, 29, 32:33,43)]
+fa.data.Melb.Trainbus.600<-Melb.Trainbus.600[,c(19, 21, 22, 25:26, 28:33,43)]
+
+
+fa.Melb.Trainbus.800.3<-factanal(fa.data.Melb.Trainbus.800, factors = 3, rotation = "none")
+fa.Melb.Trainbus.800.3
+
+fa.Melb.Trainbus.800.3.promax<-factanal(fa.data.Melb.Trainbus.800, factors = 3, rotation = "promax")
+fa.Melb.Trainbus.800.3.promax
+
+fa.Melb.Trainbus.800.3.varimax<-factanal(fa.data.Melb.Trainbus.800, factors = 3, rotation = "varimax")
+fa.Melb.Trainbus.800.3.varimax
+
+#promax solution is best (cross-loading with varimax solution)
+
+fa.Melb.Trainbus.600.3<-factanal(fa.data.Melb.Trainbus.600, factors = 3, rotation = "none")
+fa.Melb.Trainbus.600.3
+
+fa.Melb.Trainbus.600.4<-factanal(fa.data.Melb.Trainbus.600, factors = 4, rotation = "none")
+fa.Melb.Trainbus.600.4
+
+fa.Melb.Trainbus.600.4.promax<-factanal(fa.data.Melb.Trainbus.600, factors = 4, rotation = "promax")
+fa.Melb.Trainbus.600.4.promax
+
+fa.Melb.Trainbus.600.4.varimax<-factanal(fa.data.Melb.Trainbus.600, factors = 4, rotation = "varimax")
+fa.Melb.Trainbus.600.4.varimax
+
+#promax gives best solution, explaining 71.6% of variance (600m)
+
+#800m: promax, 3-factors (62.6% variance explained)
+capture.output(fa.Melb.Trainbus.800.3.promax, file = "fa.Melb.Trainbus.800.3.promax.txt")
+#600m: promax, 4-factors (71.65% of varance explained)
+capture.output(fa.Melb.Trainbus.600.4.promax, file = "fa.Melb.Trainbus.600.4.promax.txt")
 
 #Step 1.5 Evaluate the adequacy of the number of factors
 #Methods for evaluating the appropriateness of the solution include (O'Hair 2014, pp. 106-109):
