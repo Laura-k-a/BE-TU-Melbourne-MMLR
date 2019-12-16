@@ -3,35 +3,30 @@ Call:
 factanal(x = fa.data.Melb.Trainbus.800, factors = 3, rotation = "promax")
 
 Uniquenesses:
-        X2_EmpDen         X4_PopDen       X5_Dwelling      X8_RetailEmp        X9_Balance 
-            0.193             0.005             0.022             0.005             0.330 
-   X11_HousingDiv X12_Intersections     X15_DestCount       X16_DistCBD        X26_Access 
-            0.422             0.372             0.461             0.494             0.379 
+   X2_EmpDen    X4_PopDen  X5_Dwelling X8_RetailEmp   X9_Balance      X13_PBN  X16_DistCBD 
+       0.219        0.005        0.022        0.005        0.302        0.212        0.348 
 
 Loadings:
-                  Factor1 Factor2 Factor3
-X2_EmpDen          0.276   0.665   0.115 
-X4_PopDen          0.331           0.744 
-X5_Dwelling        0.369           0.691 
-X8_RetailEmp               0.947   0.220 
-X9_Balance                -0.864   0.297 
-X11_HousingDiv     0.709           0.117 
-X12_Intersections  0.816                 
-X15_DestCount      0.853          -0.160 
-X16_DistCBD       -0.580          -0.182 
-X26_Access         0.502   0.205   0.218 
+             Factor1 Factor2 Factor3
+X2_EmpDen     0.321   0.715         
+X4_PopDen     0.928           0.110 
+X5_Dwelling   0.930                 
+X8_RetailEmp  0.245   0.942         
+X9_Balance    0.426  -0.841  -0.123 
+X13_PBN                       0.880 
+X16_DistCBD  -0.204          -0.691 
 
                Factor1 Factor2 Factor3
-SS loadings      2.813   2.143   1.302
-Proportion Var   0.281   0.214   0.130
-Cumulative Var   0.281   0.496   0.626
+SS loadings      2.114   2.111   1.293
+Proportion Var   0.302   0.302   0.185
+Cumulative Var   0.302   0.604   0.788
 
 Factor Correlations:
         Factor1 Factor2 Factor3
-Factor1   1.000  -0.258  -0.674
-Factor2  -0.258   1.000   0.529
-Factor3  -0.674   0.529   1.000
+Factor1   1.000  -0.342  -0.632
+Factor2  -0.342   1.000   0.508
+Factor3  -0.632   0.508   1.000
 
 Test of the hypothesis that 3 factors are sufficient.
-The chi square statistic is 102.91 on 18 degrees of freedom.
-The p-value is 6.47e-14 
+The chi square statistic is 21.43 on 3 degrees of freedom.
+The p-value is 8.59e-05 
