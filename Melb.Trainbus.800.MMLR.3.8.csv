@@ -1,0 +1,62 @@
+Response ln_Train :
+
+Call:
+lm(formula = ln_Train ~ X7_PropComm + X11_HousingDiv + X12_Intersections + 
+    X14_DestScore + X17_ACCount + X20_LOS + X21_PropFTE + X24_Urban + 
+    Factor3, data = Melb.Trainbus.800.rd3)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.01799 -0.26671 -0.00819  0.28832  0.89548 
+
+Coefficients:
+                    Estimate Std. Error t value            Pr(>|t|)    
+(Intercept)        5.4660892  0.6805227   8.032 0.00000000000081054 ***
+X7_PropComm        0.4942308  0.3176105   1.556             0.12236    
+X11_HousingDiv    -0.0373887  0.0341323  -1.095             0.27557    
+X12_Intersections -0.0007256  0.0005538  -1.310             0.19269    
+X14_DestScore      0.0091875  0.0334058   0.275             0.78378    
+X17_ACCount        0.2341973  0.0901758   2.597             0.01060 *  
+X20_LOS            0.0047472  0.0005171   9.181 0.00000000000000174 ***
+X21_PropFTE        1.2980689  1.0883891   1.193             0.23540    
+X24_Urban          0.8808922  0.3137095   2.808             0.00584 ** 
+Factor3            0.1690112  0.0462860   3.651             0.00039 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.4114 on 118 degrees of freedom
+Multiple R-squared:  0.6325,	Adjusted R-squared:  0.6045 
+F-statistic: 22.57 on 9 and 118 DF,  p-value: < 0.00000000000000022
+
+
+Response ln_Bus :
+
+Call:
+lm(formula = ln_Bus ~ X7_PropComm + X11_HousingDiv + X12_Intersections + 
+    X14_DestScore + X17_ACCount + X20_LOS + X21_PropFTE + X24_Urban + 
+    Factor3, data = Melb.Trainbus.800.rd3)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.9431 -0.5460  0.0024  0.6215  3.2876 
+
+Coefficients:
+                   Estimate Std. Error t value             Pr(>|t|)    
+(Intercept)       -1.283602   1.631448  -0.787             0.432984    
+X7_PropComm        2.634358   0.761422   3.460             0.000753 ***
+X11_HousingDiv    -0.296725   0.081827  -3.626             0.000426 ***
+X12_Intersections -0.004368   0.001328  -3.290             0.001321 ** 
+X14_DestScore      0.181935   0.080085   2.272             0.024912 *  
+X17_ACCount        0.624314   0.216182   2.888             0.004615 ** 
+X20_LOS            0.011931   0.001240   9.624 < 0.0000000000000002 ***
+X21_PropFTE        6.463343   2.609244   2.477             0.014662 *  
+X24_Urban          1.800322   0.752070   2.394             0.018250 *  
+Factor3            0.103862   0.110964   0.936             0.351183    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.9862 on 118 degrees of freedom
+Multiple R-squared:  0.6775,	Adjusted R-squared:  0.6529 
+F-statistic: 27.54 on 9 and 118 DF,  p-value: < 0.00000000000000022
+
+

@@ -549,3 +549,167 @@ plot(lm(ln_Train ~ X10_Entropy+X17_ACCount+X20_LOS+Factor3, data=Melb.Trainbus.6
 capture.output(summary(Melb.Trainbus.600.MMLR.4.11),file = "Melb.trainbus.600.MMLR.4.11.csv")
 
 #800m
+Melb.Trainbus.800.MMLR.1 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X10_Entropy+X11_HousingDiv+X12_Intersections+X14_DestScore+X15_DestCount+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X25_Rural+X26_Access+Factor2+Factor3, data=Melb.Trainbus.800)
+summary(Melb.Trainbus.800.MMLR.1)
+Anova(Melb.Trainbus.800.MMLR.1)
+
+#removeDestCount
+Melb.Trainbus.800.MMLR.2 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X10_Entropy+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X25_Rural+X26_Access+Factor2+Factor3, data=Melb.Trainbus.800)
+summary(Melb.Trainbus.800.MMLR.2)
+Anova(Melb.Trainbus.800.MMLR.2)
+
+#remove MedInc
+Melb.Trainbus.800.MMLR.3 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X10_Entropy+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X24_Urban+X25_Rural+X26_Access+Factor2+Factor3, data=Melb.Trainbus.800)
+summary(Melb.Trainbus.800.MMLR.3)
+Anova(Melb.Trainbus.800.MMLR.3)
+
+#remove rural
+Melb.Trainbus.800.MMLR.4<- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X10_Entropy+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X24_Urban+X26_Access+Factor2+Factor3, data=Melb.Trainbus.800)
+summary(Melb.Trainbus.800.MMLR.4)
+Anova(Melb.Trainbus.800.MMLR.4)
+
+#remove entropy
+Melb.Trainbus.800.MMLR.5<- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X24_Urban+X26_Access+Factor2+Factor3, data=Melb.Trainbus.800)
+summary(Melb.Trainbus.800.MMLR.5)
+Anova(Melb.Trainbus.800.MMLR.5)
+
+#remove destscore
+Melb.Trainbus.800.MMLR.6<- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X24_Urban+X26_Access+Factor2+Factor3, data=Melb.Trainbus.800)
+summary(Melb.Trainbus.800.MMLR.6)
+Anova(Melb.Trainbus.800.MMLR.6)
+
+#remove access
+Melb.Trainbus.800.MMLR.7<- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X24_Urban+Factor2+Factor3, data=Melb.Trainbus.800)
+summary(Melb.Trainbus.800.MMLR.7)
+Anova(Melb.Trainbus.800.MMLR.7)
+
+#remove Factor 2
+Melb.Trainbus.800.MMLR.8<- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X24_Urban+Factor3, data=Melb.Trainbus.800)
+summary(Melb.Trainbus.800.MMLR.8)
+Anova(Melb.Trainbus.800.MMLR.8)
+
+#remove intersections
+Melb.Trainbus.800.MMLR.9<- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X24_Urban+Factor3, data=Melb.Trainbus.800)
+summary(Melb.Trainbus.800.MMLR.9)
+Anova(Melb.Trainbus.800.MMLR.9)
+
+#remove PropFTE
+Melb.Trainbus.800.MMLR.10<- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X17_ACCount+X18_ACNear+X20_LOS+X24_Urban+Factor3, data=Melb.Trainbus.800)
+summary(Melb.Trainbus.800.MMLR.10)
+Anova(Melb.Trainbus.800.MMLR.10)
+
+#run diagnostics
+par(mfrow=c(2,2))
+plot(lm(ln_Train ~ X7_PropComm+X11_HousingDiv+X17_ACCount+X18_ACNear+X20_LOS+X24_Urban+Factor3, data=Melb.Trainbus.800))
+
+#influential outliers: 1-800-C; 2-800-C; 3-800-C
+
+plot(lm(ln_Bus ~ X7_PropComm+X11_HousingDiv+X17_ACCount+X18_ACNear+X20_LOS+X24_Urban+Factor3, data=Melb.Trainbus.800))
+#(Approaching influential outliers: 14-800-C, 39-800-C; 15-800-C
+
+which(rownames(Melb.Trainbus.800) == "1-800-C") #135
+which(rownames(Melb.Trainbus.800) == "2-800-C") #134
+which(rownames(Melb.Trainbus.800) == "3-800-C") #133
+which(rownames(Melb.Trainbus.800) == "14-800-C")#39
+which(rownames(Melb.Trainbus.800) == "39-800-C")#131
+which(rownames(Melb.Trainbus.800) == "15-800-C")#121
+
+#remove influential outlier
+Melb.Trainbus.800.rd2 <- Melb.Trainbus.800[-c(39, 131, 121, 133, 134, 135),]
+
+#rerun maximally adjusted model
+Melb.Trainbus.800.MMLR.2.1 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X10_Entropy+X11_HousingDiv+X12_Intersections+X14_DestScore+X15_DestCount+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X25_Rural+X26_Access+Factor2+Factor3, data=Melb.Trainbus.800.rd2)
+summary(Melb.Trainbus.800.MMLR.2.1)
+Anova(Melb.Trainbus.800.MMLR.2.1)
+
+#remove factor 2
+Melb.Trainbus.800.MMLR.2.2 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X10_Entropy+X11_HousingDiv+X12_Intersections+X14_DestScore+X15_DestCount+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X25_Rural+X26_Access+Factor3, data=Melb.Trainbus.800.rd2)
+summary(Melb.Trainbus.800.MMLR.2.2)
+Anova(Melb.Trainbus.800.MMLR.2.2)
+
+#remove destcount
+Melb.Trainbus.800.MMLR.2.3 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X10_Entropy+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X25_Rural+X26_Access+Factor3, data=Melb.Trainbus.800.rd2)
+summary(Melb.Trainbus.800.MMLR.2.3)
+Anova(Melb.Trainbus.800.MMLR.2.3)
+
+#remove entropy
+Melb.Trainbus.800.MMLR.2.4 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X25_Rural+X26_Access+Factor3, data=Melb.Trainbus.800.rd2)
+summary(Melb.Trainbus.800.MMLR.2.4)
+Anova(Melb.Trainbus.800.MMLR.2.4)
+
+#remove access
+Melb.Trainbus.800.MMLR.2.5 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X25_Rural+Factor3, data=Melb.Trainbus.800.rd2)
+summary(Melb.Trainbus.800.MMLR.2.5)
+Anova(Melb.Trainbus.800.MMLR.2.5)
+
+#remove MedINc
+Melb.Trainbus.800.MMLR.2.6 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X24_Urban+X25_Rural+Factor3, data=Melb.Trainbus.800.rd2)
+summary(Melb.Trainbus.800.MMLR.2.6)
+Anova(Melb.Trainbus.800.MMLR.2.6)
+
+#remove ACNear
+Melb.Trainbus.800.MMLR.2.7 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X20_LOS+X21_PropFTE+X24_Urban+X25_Rural+Factor3, data=Melb.Trainbus.800.rd2)
+summary(Melb.Trainbus.800.MMLR.2.7)
+Anova(Melb.Trainbus.800.MMLR.2.7)
+
+#run diagnostics
+plot(lm(ln_Train ~ X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X20_LOS+X21_PropFTE+X24_Urban+X25_Rural+Factor3, data=Melb.Trainbus.800.rd2))
+
+#influential outlier: 163-800-C
+
+plot(lm(ln_Bus ~ X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X20_LOS+X21_PropFTE+X24_Urban+X25_Rural+Factor3, data=Melb.Trainbus.800.rd2))
+#influential outlier: 163-800-C
+
+#Accept solution
+which(rownames(Melb.Trainbus.800.rd2) == "163-800-C")#129
+
+#remove influential outlier
+Melb.Trainbus.800.rd3 <- Melb.Trainbus.800.rd2[-c(129),]
+
+#rerun maximally adjusted model
+Melb.Trainbus.800.MMLR.3.1 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X10_Entropy+X11_HousingDiv+X12_Intersections+X14_DestScore+X15_DestCount+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X25_Rural+X26_Access+Factor2+Factor3, data=Melb.Trainbus.800.rd3)
+summary(Melb.Trainbus.800.MMLR.3.1)
+Anova(Melb.Trainbus.800.MMLR.3.1)
+
+#remove rural
+Melb.Trainbus.800.MMLR.3.2 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X10_Entropy+X11_HousingDiv+X12_Intersections+X14_DestScore+X15_DestCount+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X26_Access+Factor2+Factor3, data=Melb.Trainbus.800.rd3)
+summary(Melb.Trainbus.800.MMLR.3.2)
+Anova(Melb.Trainbus.800.MMLR.3.2)
+
+#remove factor 2
+Melb.Trainbus.800.MMLR.3.3 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X10_Entropy+X11_HousingDiv+X12_Intersections+X14_DestScore+X15_DestCount+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X26_Access+Factor3, data=Melb.Trainbus.800.rd3)
+summary(Melb.Trainbus.800.MMLR.3.3)
+Anova(Melb.Trainbus.800.MMLR.3.3)
+
+#remove dest count
+Melb.Trainbus.800.MMLR.3.4 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X10_Entropy+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X26_Access+Factor3, data=Melb.Trainbus.800.rd3)
+summary(Melb.Trainbus.800.MMLR.3.4)
+Anova(Melb.Trainbus.800.MMLR.3.4)
+
+#remove entropy
+Melb.Trainbus.800.MMLR.3.5 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+X26_Access+Factor3, data=Melb.Trainbus.800.rd3)
+summary(Melb.Trainbus.800.MMLR.3.5)
+Anova(Melb.Trainbus.800.MMLR.3.5)
+
+#remove access
+Melb.Trainbus.800.MMLR.3.6 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X24_Urban+Factor3, data=Melb.Trainbus.800.rd3)
+summary(Melb.Trainbus.800.MMLR.3.6)
+Anova(Melb.Trainbus.800.MMLR.3.6)
+
+#remove MedInc
+Melb.Trainbus.800.MMLR.3.7 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X24_Urban+Factor3, data=Melb.Trainbus.800.rd3)
+summary(Melb.Trainbus.800.MMLR.3.7)
+Anova(Melb.Trainbus.800.MMLR.3.7)
+
+#remove ACNear
+Melb.Trainbus.800.MMLR.3.8 <- lm(cbind(ln_Train, ln_Bus) ~X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X20_LOS+X21_PropFTE+X24_Urban+Factor3, data=Melb.Trainbus.800.rd3)
+summary(Melb.Trainbus.800.MMLR.3.8)
+Anova(Melb.Trainbus.800.MMLR.3.8)
+
+#run diagnostics
+plot(lm(ln_Bus~X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X20_LOS+X21_PropFTE+X24_Urban+Factor3, data=Melb.Trainbus.800.rd3))
+
+plot(lm(ln_Train~X7_PropComm+X11_HousingDiv+X12_Intersections+X14_DestScore+X17_ACCount+X20_LOS+X21_PropFTE+X24_Urban+Factor3, data=Melb.Trainbus.800.rd3))
+
+#accept solution 
+capture.output(summary(Melb.Trainbus.800.MMLR.3.8), file = "Melb.Trainbus.800.MMLR.3.8.csv")
