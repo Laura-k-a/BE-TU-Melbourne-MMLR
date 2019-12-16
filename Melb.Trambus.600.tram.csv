@@ -1,0 +1,26 @@
+
+Call:
+lm(formula = ln_Tram ~ X13_PBN + X18_ACNear + X20_LOS + X23_MeanSize + 
+    Factor1 + Factor2 + Factor4, data = Melb.Trambus.600.noFTZ.rd3)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.02946 -0.32371  0.04811  0.30966  1.89895 
+
+Coefficients:
+                Estimate Standardized  Std. Error t value             Pr(>|t|)    
+(Intercept)   6.27964616   0.00000000  0.39718790  15.810 < 0.0000000000000002 ***
+X13_PBN      -0.02174135  -0.31919459  0.00271435  -8.010   0.0000000000000202 ***
+X18_ACNear   -0.00014737  -0.15297213  0.00004416  -3.338             0.000942 ***
+X20_LOS       0.00652925   0.47257534  0.00055920  11.676 < 0.0000000000000002 ***
+X23_MeanSize  0.18162230   0.06592855  0.12832757   1.415             0.157929    
+Factor1       0.24138755   0.27679349  0.03712522   6.502   0.0000000002953754 ***
+Factor2       0.17904173   0.20511103  0.03522942   5.082   0.0000006280208528 ***
+Factor4      -0.05420142  -0.06151479  0.03307355  -1.639             0.102211    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.5757 on 328 degrees of freedom
+Multiple R-squared:  0.5747,	Adjusted R-squared:  0.5656 
+F-statistic:  63.3 on 7 and 328 DF,  p-value: < 0.00000000000000022
+

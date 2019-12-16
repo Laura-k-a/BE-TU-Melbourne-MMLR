@@ -131,3 +131,160 @@ Melb.Trambus.600.noFTZ<- cbind(Melb.Trambus.600.noFTZ,Trambus_fs_600.noFTZ) #app
 
 
 #Step 2 estimate covariance of the outcome variables 
+cov_Trambus_ln<-cor.test(Melb.Trambus.600.noFTZ$ln_Tram, Melb.Trambus.600.noFTZ$ln_Bus, method = "pearson", conf.level = 0.95)
+cov_Trambus_ln
+
+capture.output(cov_Trambus_ln,file="cov_Trambus_ln.noFTZ.txt")
+
+#covariance of the linear ridership
+cov_Trambus<-cor.test(Melb.Trambus.600.noFTZ$Patronage_Tram, Melb.Trambus.600.noFTZ$Updated_Patronage_Bus, method = "pearson", conf.level = 0.95)
+cov_Trambus
+
+capture.output(cov_Trainbus,file="cov_Trambus.noFTZ.txt")
+
+#step 3 Check for multicolinearity
+Melb.Trambus.600.noFTZ.VIF<-vif(lm(ln_Tram ~ X13_PBN+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor3+Factor4, data =Melb.Trambus.600.noFTZ))
+Melb.Trambus.600.noFTZ.VIF
+#No multicolinearity
+
+
+#step 4 Simple correlations
+Corrdata.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(45, 46, 30, 34, 35, 37:40, 48:51)]
+#Option 1 for Correlation matrices with p-values
+Corrdata.Trambus.600.noFTZ<-rcorr(as.matrix(Corrdata.Trambus.600.noFTZ))
+
+#option 2 for flat correlation matrix
+#Set up a custom function to flatten
+flattenCorrMatrix <- function(cormat, pmat) {
+  ut <- upper.tri(cormat)
+  data.frame(
+    row = rownames(cormat)[row(cormat)[ut]],
+    column = rownames(cormat)[col(cormat)[ut]],
+    cor  =(cormat)[ut],
+    p = pmat[ut]
+  )
+}
+
+options(max.print=1000000)
+
+FlatCor.Trambus.600.noFTZ<-flattenCorrMatrix(Corrdata.Trambus.600.noFTZ$r,Corrdata.Trambus.600.noFTZ$P)
+capture.output(FlatCor.Trambus.600.noFTZ,file="FlatCor.Trambus.600.noFTZ.csv")
+
+#not significant for ln_bus
+#X13_PBN
+#X23_MeanSize
+#Factor2
+#Factor3
+#Factor4
+
+
+#ln_Tram
+#X21_PropFTE
+#X22_MedInc
+#Factor3
+
+#exclude Factor 3
+
+#Step 4 maximally adjusted model
+Melb.Trambus.600.noFTZ.MMLR.1<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ)
+summary(Melb.Trambus.600.noFTZ.MMLR.1)
+Anova(Melb.Trambus.600.noFTZ.MMLR.1)
+
+#remove ACCount
+Melb.Trambus.600.noFTZ.MMLR.2<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ)
+summary(Melb.Trambus.600.noFTZ.MMLR.2)
+Anova(Melb.Trambus.600.noFTZ.MMLR.2)
+
+#remove PropFTE
+Melb.Trambus.600.noFTZ.MMLR.3<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ)
+summary(Melb.Trambus.600.noFTZ.MMLR.3)
+Anova(Melb.Trambus.600.noFTZ.MMLR.3)
+
+#remove MedInc
+Melb.Trambus.600.noFTZ.MMLR.4<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ)
+summary(Melb.Trambus.600.noFTZ.MMLR.4)
+Anova(Melb.Trambus.600.noFTZ.MMLR.4)
+
+#run diagnostics
+par(mfrow=c(2,2))
+plot(lm(ln_Tram ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ))
+#very close to cook's distance: 454-600-C
+
+plot(lm(ln_Bus ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ))
+#Influential outlier: 376-600-C     
+
+which(rownames(Melb.Trambus.600.noFTZ) == "376-600-C") #84
+which(rownames(Melb.Trambus.600.noFTZ) == "454-600-C") #339
+
+#remove influential outlier
+Melb.Trambus.600.noFTZ.rd2 <- Melb.Trambus.600.noFTZ[-c(84,339),]
+
+#Repeat 4 maximally adjusted model
+Melb.Trambus.600.noFTZ.MMLR.2.1<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd2)
+summary(Melb.Trambus.600.noFTZ.MMLR.2.1)
+Anova(Melb.Trambus.600.noFTZ.MMLR.2.1)
+
+#remove ACCount
+Melb.Trambus.600.noFTZ.MMLR.2.2<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd2)
+summary(Melb.Trambus.600.noFTZ.MMLR.2.2)
+Anova(Melb.Trambus.600.noFTZ.MMLR.2.2)
+
+#remove PropFTE
+Melb.Trambus.600.noFTZ.MMLR.2.3<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd2)
+summary(Melb.Trambus.600.noFTZ.MMLR.2.3)
+Anova(Melb.Trambus.600.noFTZ.MMLR.2.3)
+
+#remove medINC
+Melb.Trambus.600.noFTZ.MMLR.2.4<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd2)
+summary(Melb.Trambus.600.noFTZ.MMLR.2.4)
+Anova(Melb.Trambus.600.noFTZ.MMLR.2.4)
+
+#run diagnostics
+plot(lm(ln_Tram ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd2))
+
+plot(lm(ln_Bus ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd2))
+#try removing most outlying value: 197-600-C
+
+which(rownames(Melb.Trambus.600.noFTZ.rd2) == "197-600-C") #136
+
+#remove influential outlier
+Melb.Trambus.600.noFTZ.rd3 <- Melb.Trambus.600.noFTZ.rd2[-c(136),]
+
+#rerun maximally adjusted model
+Melb.Trambus.600.noFTZ.MMLR.3.1<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+summary(Melb.Trambus.600.noFTZ.MMLR.3.1)
+Anova(Melb.Trambus.600.noFTZ.MMLR.3.1)
+
+#remove ACCount
+Melb.Trambus.600.noFTZ.MMLR.3.2<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+summary(Melb.Trambus.600.noFTZ.MMLR.3.2)
+Anova(Melb.Trambus.600.noFTZ.MMLR.3.2)
+
+#remove PropFTE
+Melb.Trambus.600.noFTZ.MMLR.3.3<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+summary(Melb.Trambus.600.noFTZ.MMLR.3.3)
+Anova(Melb.Trambus.600.noFTZ.MMLR.3.3)
+
+#remove MedInc
+Melb.Trambus.600.noFTZ.MMLR.3.4<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+summary(Melb.Trambus.600.noFTZ.MMLR.3.4)
+Anova(Melb.Trambus.600.noFTZ.MMLR.3.4)
+
+#run diagnostics
+par(mfrow=c(2,2))
+plot(lm(ln_Tram ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3))
+
+plot(lm(ln_Bus ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3))
+
+#Get Standardized regression coefficients
+Trambus_600_noFTZ_bus<-lm(ln_Bus ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+Trambus_600_noFTZ_bus<-lm.beta(Trambus_600_noFTZ_bus)
+summary(Trambus_600_noFTZ_bus)
+
+Trambus_600_noFTZ_tram<-lm(ln_Tram ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+Trambus_600_noFTZ_tram<-lm.beta(Trambus_600_noFTZ_tram)
+summary(Trambus_600_noFTZ_tram)
+
+capture.output(summary(Melb.Trambus.600.noFTZ.MMLR.3.4),file = "Melb.Trambus.600.noFTZ.MMLR.3.4.csv")
+capture.output(summary(Trambus_600_noFTZ_tram),file = "Melb.Trambus.600.tram.csv")
+capture.output(summary(Trambus_600_noFTZ_bus),file = "Melb.Trambus.600.bus.csv")
