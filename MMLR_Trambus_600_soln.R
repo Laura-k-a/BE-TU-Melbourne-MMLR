@@ -381,3 +381,13 @@ cov_Trambus_ln.rd5
 
 capture.output(summary(Melb.Trambus.600.MMLR.rd5), file = "Melb.Trambus.600.MMLR.rd5.csv")
 
+Melb.Trambus.600.MMLR.tram<-lm(ln_Tram ~ X7_PropComm+X9_Balance+X10_Entropy+X13_PBN+X20_LOS+X24_Urban+Fac_1+Fac_2+Fac_3, data = Melb.Trambus.600.noFTZ.rd5)
+
+Melb.Trambus.600.MMLR.tram.beta<-lm.beta(Melb.Trambus.600.MMLR.tram)
+summary(Melb.Trambus.600.MMLR.tram.beta)
+capture.output(summary(Melb.Trambus.600.MMLR.tram.beta),file="Melb.Trambus.600.MMLR.tram.beta.csv")
+Melb.Trambus.600.MMLR.bus<-lm(ln_Bus ~ X7_PropComm+X9_Balance+X10_Entropy+X13_PBN+X20_LOS+X24_Urban+Fac_1+Fac_2+Fac_3, data = Melb.Trambus.600.noFTZ.rd5)
+
+Melb.Trambus.600.MMLR.bus.beta<-lm.beta(Melb.Trambus.600.MMLR.bus)
+summary(Melb.Trambus.600.MMLR.bus.beta)
+capture.output(summary(Melb.Trambus.600.MMLR.bus.beta),file="Melb.Trambus.600.MMLR.bus.beta.csv")

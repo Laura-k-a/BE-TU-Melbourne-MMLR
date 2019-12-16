@@ -1,0 +1,28 @@
+
+Call:
+lm(formula = ln_Bus ~ X7_PropComm + X9_Balance + X10_Entropy + 
+    X13_PBN + X20_LOS + X24_Urban + Fac_1 + Fac_2 + Fac_3, data = Melb.Trambus.600.noFTZ.rd5)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.7303 -0.8015  0.1437  0.9239  2.9155 
+
+Coefficients:
+             Estimate Standardized Std. Error t value Pr(>|t|)    
+(Intercept) -6.289032     0.000000   1.669536  -3.767 0.000197 ***
+X7_PropComm  1.146972     0.115593   0.641841   1.787 0.074889 .  
+X9_Balance   5.461188     0.259498   1.241834   4.398 1.49e-05 ***
+X10_Entropy  3.699726     0.096833   2.685366   1.378 0.169253    
+X13_PBN      0.002449     0.020416   0.006462   0.379 0.704962    
+X20_LOS      0.012965     0.465526   0.001479   8.766  < 2e-16 ***
+X24_Urban    2.728236     0.214661   0.848851   3.214 0.001443 ** 
+Fac_1       -0.127135    -0.080424   0.091400  -1.391 0.165207    
+Fac_2        0.423619     0.164476   0.135173   3.134 0.001886 ** 
+Fac_3       -0.109599    -0.065902   0.081583  -1.343 0.180097    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.286 on 318 degrees of freedom
+Multiple R-squared:  0.3294,	Adjusted R-squared:  0.3104 
+F-statistic: 17.36 on 9 and 318 DF,  p-value: < 2.2e-16
+
