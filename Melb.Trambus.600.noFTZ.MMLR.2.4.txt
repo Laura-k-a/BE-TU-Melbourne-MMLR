@@ -1,0 +1,56 @@
+Response ln_Tram :
+
+Call:
+lm(formula = ln_Tram ~ X13_PBN + X18_ACNear + X20_LOS + X23_MeanSize + 
+    Factor1 + Factor2 + Factor4, data = Melb.Trambus.600.noFTZ.rd2)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.02785 -0.32465  0.04726  0.30846  1.90017 
+
+Coefficients:
+                Estimate  Std. Error t value             Pr(>|t|)    
+(Intercept)   6.27247509  0.39670057  15.812 < 0.0000000000000002 ***
+X13_PBN      -0.02173541  0.00271202  -8.014   0.0000000000000195 ***
+X18_ACNear   -0.00014731  0.00004412  -3.339             0.000937 ***
+X20_LOS       0.00653106  0.00055872  11.689 < 0.0000000000000002 ***
+X23_MeanSize  0.18369359  0.12817971   1.433             0.152780    
+Factor1       0.24010483  0.03704287   6.482   0.0000000003313811 ***
+Factor2       0.17820281  0.03517650   5.066   0.0000006786236298 ***
+Factor4      -0.05384146  0.03304081  -1.630             0.104155    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.5752 on 329 degrees of freedom
+Multiple R-squared:  0.5743,	Adjusted R-squared:  0.5652 
+F-statistic:  63.4 on 7 and 329 DF,  p-value: < 0.00000000000000022
+
+
+Response ln_Bus :
+
+Call:
+lm(formula = ln_Bus ~ X13_PBN + X18_ACNear + X20_LOS + X23_MeanSize + 
+    Factor1 + Factor2 + Factor4, data = Melb.Trambus.600.noFTZ.rd2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.4219 -0.8773  0.0691  0.9528  2.9324 
+
+Coefficients:
+                Estimate  Std. Error t value            Pr(>|t|)    
+(Intercept)  -0.18413022  0.95345728  -0.193             0.84699    
+X13_PBN      -0.00712159  0.00651825  -1.093             0.27539    
+X18_ACNear   -0.00003198  0.00010604  -0.302             0.76314    
+X20_LOS       0.01098384  0.00134286   8.179 0.00000000000000628 ***
+X23_MeanSize  1.01689493  0.30807588   3.301             0.00107 ** 
+Factor1       0.22348232  0.08903136   2.510             0.01255 *  
+Factor2       0.09979057  0.08454560   1.180             0.23873    
+Factor4       0.20898496  0.07941253   2.632             0.00890 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.383 on 329 degrees of freedom
+Multiple R-squared:  0.2516,	Adjusted R-squared:  0.2357 
+F-statistic:  15.8 on 7 and 329 DF,  p-value: < 0.00000000000000022
+
+
