@@ -125,7 +125,7 @@ fa.Melb.Trambus.600.No.FTZ.4.promax
 
 
 #Step 1.5 estimate factor scores and add to the master data frame
-Trambus_fs_600.noFTZ <- factor.scores(fa.data.Melb.Trambus.600.NoFTZ, fa.Melb.Trambus.600.No.FTZ.4.promax)
+  Trambus_fs_600.noFTZ <- factor.scores(fa.data.Melb.Trambus.600.NoFTZ, fa.Melb.Trambus.600.No.FTZ.4.promax)
 Trambus_fs_600.noFTZ <- Trambus_fs_600.noFTZ$scores      #get the columns of factor scores for each case
 Melb.Trambus.600.noFTZ<- cbind(Melb.Trambus.600.noFTZ,Trambus_fs_600.noFTZ) #append factor scores to dataset
 
@@ -243,48 +243,52 @@ Anova(Melb.Trambus.600.noFTZ.MMLR.2.4)
 plot(lm(ln_Tram ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd2))
 
 plot(lm(ln_Bus ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd2))
-#try removing most outlying value: 197-600-C
-
-which(rownames(Melb.Trambus.600.noFTZ.rd2) == "197-600-C") #136
-
-#remove influential outlier
-Melb.Trambus.600.noFTZ.rd3 <- Melb.Trambus.600.noFTZ.rd2[-c(136),]
-
-#rerun maximally adjusted model
-Melb.Trambus.600.noFTZ.MMLR.3.1<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
-summary(Melb.Trambus.600.noFTZ.MMLR.3.1)
-Anova(Melb.Trambus.600.noFTZ.MMLR.3.1)
-
-#remove ACCount
-Melb.Trambus.600.noFTZ.MMLR.3.2<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
-summary(Melb.Trambus.600.noFTZ.MMLR.3.2)
-Anova(Melb.Trambus.600.noFTZ.MMLR.3.2)
-
-#remove PropFTE
-Melb.Trambus.600.noFTZ.MMLR.3.3<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
-summary(Melb.Trambus.600.noFTZ.MMLR.3.3)
-Anova(Melb.Trambus.600.noFTZ.MMLR.3.3)
-
-#remove MedInc
-Melb.Trambus.600.noFTZ.MMLR.3.4<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
-summary(Melb.Trambus.600.noFTZ.MMLR.3.4)
-Anova(Melb.Trambus.600.noFTZ.MMLR.3.4)
-
-#run diagnostics
-par(mfrow=c(2,2))
-plot(lm(ln_Tram ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3))
-
-plot(lm(ln_Bus ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3))
+#inspect,but accept the solution: 197-600-C
 
 #Get Standardized regression coefficients
-Trambus_600_noFTZ_bus<-lm(ln_Bus ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+Trambus_600_noFTZ_bus<-lm(ln_Bus ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd2)
 Trambus_600_noFTZ_bus<-lm.beta(Trambus_600_noFTZ_bus)
 summary(Trambus_600_noFTZ_bus)
 
-Trambus_600_noFTZ_tram<-lm(ln_Tram ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+Trambus_600_noFTZ_tram<-lm(ln_Tram ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd2)
 Trambus_600_noFTZ_tram<-lm.beta(Trambus_600_noFTZ_tram)
 summary(Trambus_600_noFTZ_tram)
 
-capture.output(summary(Melb.Trambus.600.noFTZ.MMLR.3.4),file = "Melb.Trambus.600.noFTZ.MMLR.3.4.csv")
-capture.output(summary(Trambus_600_noFTZ_tram),file = "Melb.Trambus.600.tram.csv")
-capture.output(summary(Trambus_600_noFTZ_bus),file = "Melb.Trambus.600.bus.csv")
+capture.output(summary(Melb.Trambus.600.noFTZ.MMLR.2.4),file = "Melb.Trambus.600.noFTZ.MMLR.2.4.txt")
+capture.output(summary(Trambus_600_noFTZ_tram),file = "Melb.Trambus.600.tram.txt")
+capture.output(summary(Trambus_600_noFTZ_bus),file = "Melb.Trambus.600.bus.txt")
+
+## (rownames(Melb.Trambus.600.noFTZ.rd2) == "197-600-C") #136
+
+#remove influential outlier
+##Melb.Trambus.600.noFTZ.rd3 <- Melb.Trambus.600.noFTZ.rd2[-c(136),]
+
+#rerun maximally adjusted model
+#Melb.Trambus.600.noFTZ.MMLR.3.1<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X17_ACCount+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+#summary(Melb.Trambus.600.noFTZ.MMLR.3.1)
+#Anova(Melb.Trambus.600.noFTZ.MMLR.3.1)
+
+#remove ACCount
+#Melb.Trambus.600.noFTZ.MMLR.3.2<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X21_PropFTE+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+#summary(Melb.Trambus.600.noFTZ.MMLR.3.2)
+#Anova(Melb.Trambus.600.noFTZ.MMLR.3.2)
+
+#remove PropFTE
+#Melb.Trambus.600.noFTZ.MMLR.3.3<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X22_MedInc+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+#summary(Melb.Trambus.600.noFTZ.MMLR.3.3)
+#Anova(Melb.Trambus.600.noFTZ.MMLR.3.3)
+
+#remove MedInc
+#Melb.Trambus.600.noFTZ.MMLR.3.4<-lm(cbind(ln_Tram, ln_Bus) ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3)
+#summary(Melb.Trambus.600.noFTZ.MMLR.3.4)
+#Anova(Melb.Trambus.600.noFTZ.MMLR.3.4)
+
+#run diagnostics
+#par(mfrow=c(2,2))
+#plot(lm(ln_Tram ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, data =Melb.Trambus.600.noFTZ.rd3))
+
+#plot(lm(ln_Bus ~ X13_PBN+X18_ACNear+X20_LOS+X23_MeanSize+Factor1+Factor2+Factor4, #data =Melb.Trambus.600.noFTZ.rd3))
+
+
+
+
