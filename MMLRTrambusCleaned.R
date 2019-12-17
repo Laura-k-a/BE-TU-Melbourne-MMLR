@@ -149,7 +149,7 @@ Melb.Trambus.600.noFTZ.VIF
 
 
 #step 4 Simple correlations
-Corrdata.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(45, 46, 30, 34, 35, 37:40, 48:51)]
+Corrdata.Trambus.600.noFTZ<-Melb.Trambus.600.noFTZ[,c(15, 16, 45, 46, 30, 34, 35, 37:40, 48:51)]
 #Option 1 for Correlation matrices with p-values
 Corrdata.Trambus.600.noFTZ<-rcorr(as.matrix(Corrdata.Trambus.600.noFTZ))
 
