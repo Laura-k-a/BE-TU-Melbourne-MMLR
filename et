@@ -1,0 +1,149 @@
+[33mcommit aa4bc5d29ed3ddee43f3585a9fd135d770146056[m[33m ([m[1;36mHEAD -> [m[1;32mregB_Simplification[m[33m, [m[1;31morigin/regB_Simplification[m[33m, [m[1;31morigin/lnDensity[m[33m, [m[1;32mlnDensity[m[33m)[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Mon Dec 30 15:05:54 2019 -0500
+
+    Created new file location for new round of outputs
+
+[33mcommit 42e8518cdf138f3635e3f69f932d5120906dfae9[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Mon Dec 30 15:05:02 2019 -0500
+
+    Updated LU Entropy values in data
+
+[33mcommit 957e3f9978a7131aba7253ad787d8562c5554e85[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Sun Dec 29 20:29:12 2019 -0500
+
+    Clustered sample linear regression on tram and train
+
+[33mcommit c0bea1494363d9b8e8e0fe61b6b56f92fef6f2e6[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Fri Dec 20 12:37:47 2019 -0500
+
+    Bus Cluster LM
+
+[33mcommit e40378fbb3c8d52efc1c0b112f3955f5ca1010eb[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Fri Dec 20 10:08:26 2019 -0500
+
+    Cluster sampling
+
+[33mcommit e31faf7884f423832671993b6765616f64e769c7[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Fri Dec 20 08:46:50 2019 -0500
+
+    Trambus MMLR with ln density metrics
+
+[33mcommit cecdfbb069c5e69e423cb2c9fcbbc651a154bf67[m[33m ([m[1;32mSensitivityTest3_MMLR_surrogate[m[33m)[m
+Author: Laura Katherine Aston <Laura.Aston@monash.edu>
+Date:   Thu Dec 19 18:09:50 2019 -0500
+
+    Trainbus MMLR
+
+[33mcommit e0db29785c9a6d010bd1a49c74ea666b391f0b15[m[33m ([m[1;31morigin/SensitivityTest3_MMLR_surrogate[m[33m, [m[1;32mSensitivtyTest2_NoFTZ_MMLR[m[33m)[m
+Author: Laura Katherine Aston <Laura.Aston@monash.edu>
+Date:   Thu Dec 19 16:09:49 2019 -0500
+
+    Removed another set of outliers (not outside cook's distance); no improvement in explainability of results though
+
+[33mcommit c21c10ca5a39016a6fa75b98a1a23fd254da2f2a[m[33m ([m[1;31morigin/FA_NoFTZ[m[33m)[m
+Author: Laura Katherine Aston <Laura.Aston@monash.edu>
+Date:   Thu Dec 19 14:46:00 2019 -0500
+
+    Updated FA to extract factor scores; ran MMLR without FTZ
+
+[33mcommit 1ac1f0ae948589a01f574bdee9bfd8e85db46202[m[33m ([m[1;31morigin/SensitivtyTest2_NoFTZ_MMLR[m[33m, [m[1;32mSensitivityTest1_FullSample[m[33m)[m
+Author: Laura Katherine Aston <Laura.Aston@monash.edu>
+Date:   Thu Dec 19 13:56:29 2019 -0500
+
+    1st run MMLR including Free tram zone
+
+[33mcommit 30e594ba09d0964d1ff44a82d3a2f40ee89631f0[m
+Author: Laura Katherine Aston <Laura.Aston@monash.edu>
+Date:   Thu Dec 19 11:43:27 2019 -0500
+
+    Updated colocated sample scores for correct catchment; added in factor scores and censored SD variables
+
+[33mcommit 773bc65bb2b21a6a98641dca91e691181e770754[m
+Author: Laura Katherine Aston <Laura.Aston@monash.edu>
+Date:   Thu Dec 19 10:32:44 2019 -0500
+
+    Full run cluster analysis , excluding dummy BE variables
+
+[33mcommit 575a0b526ab2c271fce84c593263046328c8c19b[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Thu Dec 19 08:09:38 2019 -0500
+
+    Demographic cluster analysis using censored scores for PropFTE and mean household size
+
+[33mcommit dbec8c9e5642f65170746a48acf7129ebe970f9e[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Wed Dec 18 20:55:45 2019 -0500
+
+    BE cluster solution
+
+[33mcommit cf8525383c6fc1086b9d944ee6167cb454ff74ef[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Wed Dec 18 19:26:17 2019 -0500
+
+    Scree plot for sociodemographic variables (although no factor solution)
+
+[33mcommit e0a718e2045af97dc928a8e62396db5b1b3b6d5f[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Wed Dec 18 19:25:19 2019 -0500
+
+    Solved factors for sample: All stops (incl. Free tram zone)
+
+[33mcommit 6bc6a14a6699b53b6e0f02f6d284b962f25840e2[m[33m ([m[1;31morigin/SensitivityTest1_FullSample[m[33m)[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Wed Dec 18 18:19:20 2019 -0500
+
+    Cut factor anlaysis as this will appear in the branch for sensitivity testing
+
+[33mcommit 1bce5d9ed8f2c4febf10a7073727ed3677d1826b[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Wed Dec 18 18:16:08 2019 -0500
+
+    Creation of separate scripts for three samples.
+
+[33mcommit 030896d3dcb20cffaedd9af005bb2f1cf6c9d005[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Wed Dec 18 18:15:56 2019 -0500
+
+    Updated data files - new method for colocated stops
+
+[33mcommit d800632855547edd508fe3c8df7bb458a2e61bee[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Tue Dec 17 00:03:42 2019 -0500
+
+    Script for deriving both BE and sociodemographic clusters
+
+[33mcommit e2c87199ed8c63355f8a289006019535d1da6a75[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Mon Dec 16 23:30:55 2019 -0500
+
+    Updated factor analysis script
+
+[33mcommit b96b5161fe63bc6095d33f1ab95d0011a0af625a[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Mon Dec 16 23:30:34 2019 -0500
+
+    Complete run of factor solution
+
+[33mcommit 13fdb38be19a6120a2171061b6bfc22b3f85d702[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Mon Dec 16 23:14:26 2019 -0500
+
+    Updated column headers in data file
+
+[33mcommit 07208564d7257fc3990fa0c34b57c63d05cbc953[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Laura-k-a <52014508+Laura-k-a@users.noreply.github.com>
+Date:   Mon Dec 16 22:20:18 2019 -0500
+
+    Create README.md
+
+[33mcommit 777aa95efe72653697a787baa697b97840eba045[m
+Author: Laura Katherine Aston <laura.aston@monash.edu>
+Date:   Mon Dec 16 22:19:41 2019 -0500
+
+    Initialise the project and factor analysis scropt

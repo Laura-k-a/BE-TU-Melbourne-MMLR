@@ -1,0 +1,27 @@
+
+Call:
+factanal(x = cormat.BE.Allmodes.800, factors = 3, rotation = "none",     lower = 0.01)
+
+Uniquenesses:
+    X21_Empden     X23_Popden      X24_Dwell  X27_RetailEmp X30_HousingDiv  X33_DestScore  X34_DestCount    X36_CDBDist 
+         0.010          0.010          0.021          0.053          0.369          0.292          0.177          0.503 
+
+Loadings:
+               Factor1 Factor2 Factor3
+X21_Empden      0.861  -0.498         
+X23_Popden      0.926   0.362         
+X24_Dwell       0.934   0.326         
+X27_RetailEmp   0.871  -0.430         
+X30_HousingDiv  0.476   0.404   0.491 
+X33_DestScore   0.498   0.352   0.580 
+X34_DestCount   0.807   0.101   0.402 
+X36_CDBDist    -0.490  -0.323  -0.390 
+
+               Factor1 Factor2 Factor3
+SS loadings      4.597   1.072   0.896
+Proportion Var   0.575   0.134   0.112
+Cumulative Var   0.575   0.709   0.821
+
+Test of the hypothesis that 3 factors are sufficient.
+The chi square statistic is 1527.74 on 7 degrees of freedom.
+The p-value is 0 

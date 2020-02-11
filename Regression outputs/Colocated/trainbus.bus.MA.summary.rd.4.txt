@@ -1,0 +1,38 @@
+
+Call:
+lm(formula = ln_bus ~ PropComm + Balance + LUEntropy + PedConnect + 
+    PBN + ACDist + ACCount + EmpAccess + C_LOS + O_Bus_LOS + 
+    PropOS + PropBach + X34_censored_PropFTE + DestScore_surrogate + 
+    ln_Pop_surrogate + Parking + Parkiteer, data = Melb.Trainbus.rd4)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.6341 -0.6046  0.0708  0.6078  2.9646 
+
+Coefficients:
+                          Estimate  Standardized    Std. Error t value        Pr(>|t|)    
+(Intercept)           0.7952480331  0.0000000000  3.1715163186   0.251         0.80243    
+PropComm              1.2150487844  0.1061372497  0.8860853269   1.371         0.17279    
+Balance               4.0266900514  0.1965761186  1.5239131652   2.642         0.00930 ** 
+LUEntropy            -1.2625093005 -0.0953637176  0.9906746822  -1.274         0.20493    
+PedConnect           -0.0054927118 -0.1394537347  0.0036883836  -1.489         0.13900    
+PBN                  -0.0281182429 -0.0031747733  0.5547678772  -0.051         0.95966    
+ACDist                0.2431505219  0.1761500142  0.1262360205   1.926         0.05639 .  
+ACCount               0.9472014219  0.2862677303  0.2954760211   3.206         0.00172 ** 
+EmpAccess             0.0000001067  0.0106367102  0.0000009283   0.115         0.90867    
+C_LOS                 0.0042908660  0.1419607668  0.0019746900   2.173         0.03170 *  
+O_Bus_LOS             0.0145379076  0.5686542348  0.0019811376   7.338 0.0000000000256 ***
+PropOS               -6.6596728860 -0.0761831602  5.8668637868  -1.135         0.25853    
+PropBach              0.2705099402  0.0233972520  1.0730518479   0.252         0.80139    
+X34_censored_PropFTE -1.5603836299 -0.0369432709  2.9561406620  -0.528         0.59856    
+DestScore_surrogate   0.0249986740  0.0197475270  0.0960294941   0.260         0.79505    
+ln_Pop_surrogate      0.4227796819  0.1432385413  0.3156594387   1.339         0.18293    
+Parking              41.5760343799  0.0965796948 26.1569199982   1.589         0.11452    
+Parkiteer             0.4052738452  0.1239255734  0.2200899346   1.841         0.06797 .  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.058 on 123 degrees of freedom
+Multiple R-squared:  0.6315,	Adjusted R-squared:  0.5806 
+F-statistic:  12.4 on 17 and 123 DF,  p-value: < 0.00000000000000022
+

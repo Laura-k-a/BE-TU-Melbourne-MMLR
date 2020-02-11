@@ -1,0 +1,30 @@
+
+Call:
+lm(formula = ln_bus ~ PropComm + LUEntropy + EmpAccess + C_LOS + 
+    O_Bus_LOS + O_Train_LOS + PropOS + PropBach + X34_censored_PropFTE + 
+    ln_Pop_surrogate, data = Melb.Trambus.noFTZ.rd2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.0602 -0.7302  0.0836  0.8979  3.0473 
+
+Coefficients:
+                          Estimate  Standardized    Std. Error t value             Pr(>|t|)    
+(Intercept)          -1.7824609516  0.0000000000  1.6304449303  -1.093              0.27509    
+PropComm              0.8540003645  0.0880685491  0.4943513905   1.728              0.08501 .  
+LUEntropy            -0.0328735686 -0.0029987853  0.5070110639  -0.065              0.94834    
+EmpAccess            -0.0000008923 -0.0778496868  0.0000007377  -1.210              0.22732    
+C_LOS                 0.0019759994  0.0330602126  0.0026039091   0.759              0.44848    
+O_Bus_LOS             0.0235752978  0.6045340634  0.0018711507  12.599 < 0.0000000000000002 ***
+O_Train_LOS           0.0072522548  0.1238062319  0.0025524393   2.841              0.00477 ** 
+PropOS               -5.8206441383 -0.0680416467  4.1704059002  -1.396              0.16375    
+PropBach              3.0222339740  0.1513111962  1.0564410601   2.861              0.00450 ** 
+X34_censored_PropFTE -4.2962961328 -0.1398855928  1.4496239747  -2.964              0.00326 ** 
+ln_Pop_surrogate      0.5949666036  0.1739014885  0.1946118919   3.057              0.00242 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.249 on 329 degrees of freedom
+Multiple R-squared:  0.4312,	Adjusted R-squared:  0.4139 
+F-statistic: 24.94 on 10 and 329 DF,  p-value: < 0.00000000000000022
+

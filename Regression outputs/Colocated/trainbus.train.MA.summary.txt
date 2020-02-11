@@ -1,0 +1,38 @@
+
+Call:
+lm(formula = ln_centroid ~ PropComm + Balance + LUEntropy + PedConnect + 
+    PBN + ACDist + ACCount + EmpAccess + C_LOS + O_Bus_LOS + 
+    PropOS + PropBach + X34_censored_PropFTE + DestScore_surrogate + 
+    ln_Pop_surrogate + Parking + Parkiteer, data = Melb.Trainbus)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.45462 -0.18605  0.03959  0.24831  1.46917 
+
+Coefficients:
+                          Estimate    Std. Error t value  Pr(>|t|)    
+(Intercept)           5.7210409126  1.5711146060   3.641  0.000391 ***
+PropComm             -0.1255352134  0.4496206614  -0.279  0.780537    
+Balance               0.7181070727  0.7732292246   0.929  0.354773    
+LUEntropy            -0.1454507764  0.4894348970  -0.297  0.766806    
+PedConnect           -0.0024735349  0.0018601944  -1.330  0.185958    
+PBN                  -0.6126711012  0.2768164373  -2.213  0.028637 *  
+ACDist               -0.1938045494  0.0529394492  -3.661  0.000365 ***
+ACCount              -0.2198471093  0.1382079786  -1.591  0.114125    
+EmpAccess             0.0000005494  0.0000004625   1.188  0.237085    
+C_LOS                 0.0032066855  0.0009972389   3.216  0.001646 ** 
+O_Bus_LOS             0.0044802153  0.0010025172   4.469 0.0000170 ***
+PropOS                2.6680053261  2.9167675610   0.915  0.362049    
+PropBach              1.3420532946  0.5214530850   2.574  0.011193 *  
+X34_censored_PropFTE -0.7798543528  1.4620782060  -0.533  0.594683    
+DestScore_surrogate   0.0641895534  0.0463633877   1.384  0.168599    
+ln_Pop_surrogate      0.1129865832  0.1595066116   0.708  0.480006    
+Parking              27.3178218626 13.1710350587   2.074  0.040060 *  
+Parkiteer             0.4830620891  0.1095953488   4.408 0.0000218 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.5403 on 129 degrees of freedom
+Multiple R-squared:  0.6856,	Adjusted R-squared:  0.6441 
+F-statistic: 16.55 on 17 and 129 DF,  p-value: < 0.00000000000000022
+

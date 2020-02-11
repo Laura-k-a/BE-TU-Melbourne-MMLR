@@ -1,0 +1,82 @@
+Response ln_bus :
+
+Call:
+lm(formula = ln_bus ~ PropComm + LUEntropy + PedConnect + PBN + 
+    ACDist + ACCount + EmpAccess + C_LOS + O_Bus_LOS + O_Train_LOS + 
+    PropOS + PropBach + X34_censored_PropFTE + X35_censored_MeanSize + 
+    DestScore_surrogate + ln_Pop_surrogate + ln_Emp_surrogate, 
+    data = Melb.Trambus.noFTZ.rd4)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.3324 -0.7016  0.0510  0.8845  3.1621 
+
+Coefficients:
+                           Estimate    Std. Error t value             Pr(>|t|)    
+(Intercept)           -1.6943696516  2.6899547352  -0.630              0.52922    
+PropComm               0.8015764042  0.5865717402   1.367              0.17273    
+LUEntropy             -0.5215718446  0.5250356001  -0.993              0.32126    
+PedConnect             0.0025846376  0.0031884445   0.811              0.41818    
+PBN                    0.5850510456  0.3728243515   1.569              0.11758    
+ACDist                 0.0386394834  0.1097809196   0.352              0.72509    
+ACCount                0.2190051999  0.1998335753   1.096              0.27393    
+EmpAccess             -0.0000015491  0.0000009872  -1.569              0.11758    
+C_LOS                  0.0015278093  0.0026367672   0.579              0.56271    
+O_Bus_LOS              0.0267245717  0.0020591586  12.978 < 0.0000000000000002 ***
+O_Train_LOS            0.0071872272  0.0025847688   2.781              0.00575 ** 
+PropOS                -6.3231040963  4.1756132226  -1.514              0.13094    
+PropBach               3.1250440039  1.0875904267   2.873              0.00433 ** 
+X34_censored_PropFTE  -4.9232944822  1.7795333532  -2.767              0.00599 ** 
+X35_censored_MeanSize  0.0579118010  0.4045897402   0.143              0.88627    
+DestScore_surrogate    0.0142450667  0.0598668030   0.238              0.81208    
+ln_Pop_surrogate       0.5053646982  0.2278054462   2.218              0.02723 *  
+ln_Emp_surrogate       0.0807762438  0.1487319095   0.543              0.58744    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.218 on 320 degrees of freedom
+Multiple R-squared:  0.459,	Adjusted R-squared:  0.4303 
+F-statistic: 15.97 on 17 and 320 DF,  p-value: < 0.00000000000000022
+
+
+Response ln_centroid :
+
+Call:
+lm(formula = ln_centroid ~ PropComm + LUEntropy + PedConnect + 
+    PBN + ACDist + ACCount + EmpAccess + C_LOS + O_Bus_LOS + 
+    O_Train_LOS + PropOS + PropBach + X34_censored_PropFTE + 
+    X35_censored_MeanSize + DestScore_surrogate + ln_Pop_surrogate + 
+    ln_Emp_surrogate, data = Melb.Trambus.noFTZ.rd4)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.50941 -0.34733  0.04899  0.37324  1.84507 
+
+Coefficients:
+                           Estimate    Std. Error t value             Pr(>|t|)    
+(Intercept)            1.9326235371  1.3540248279   1.427              0.15446    
+PropComm               0.6304099223  0.2952587600   2.135              0.03351 *  
+LUEntropy              0.5202403399  0.2642837178   1.968              0.04987 *  
+PedConnect            -0.0020028436  0.0016049463  -1.248              0.21297    
+PBN                    0.2799924989  0.1876661424   1.492              0.13669    
+ACDist                 0.0368417201  0.0552596997   0.667              0.50544    
+ACCount                0.0966490266  0.1005889128   0.961              0.33736    
+EmpAccess              0.0000012131  0.0000004969   2.441              0.01517 *  
+C_LOS                  0.0158219268  0.0013272522  11.921 < 0.0000000000000002 ***
+O_Bus_LOS              0.0017869598  0.0010365051   1.724              0.08567 .  
+O_Train_LOS           -0.0000087948  0.0013010781  -0.007              0.99461    
+PropOS                -5.5037370283  2.1018509721  -2.619              0.00925 ** 
+PropBach              -1.0077170747  0.5474532419  -1.841              0.06659 .  
+X34_censored_PropFTE  -0.6631115648  0.8957520031  -0.740              0.45967    
+X35_censored_MeanSize  0.2574412074  0.2036556772   1.264              0.20711    
+DestScore_surrogate    0.0523392440  0.0301347590   1.737              0.08338 .  
+ln_Pop_surrogate       0.2456176362  0.1146689296   2.142              0.03295 *  
+ln_Emp_surrogate       0.0445389601  0.0748662033   0.595              0.55232    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.6131 on 320 degrees of freedom
+Multiple R-squared:  0.4928,	Adjusted R-squared:  0.4659 
+F-statistic: 18.29 on 17 and 320 DF,  p-value: < 0.00000000000000022
+
+

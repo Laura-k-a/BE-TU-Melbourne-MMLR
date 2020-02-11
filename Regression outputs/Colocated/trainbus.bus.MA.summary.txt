@@ -1,0 +1,38 @@
+
+Call:
+lm(formula = ln_bus ~ PropComm + Balance + LUEntropy + PedConnect + 
+    PBN + ACDist + ACCount + EmpAccess + C_LOS + O_Bus_LOS + 
+    PropOS + PropBach + X34_censored_PropFTE + DestScore_surrogate + 
+    ln_Pop_surrogate + Parking + Parkiteer, data = Melb.Trainbus)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.7514 -0.6485  0.0229  0.6263  2.9276 
+
+Coefficients:
+                         Estimate   Std. Error t value       Pr(>|t|)    
+(Intercept)           0.135215623  3.411053572   0.040         0.9684    
+PropComm              1.105683849  0.976173321   1.133         0.2595    
+Balance               3.751976169  1.678761243   2.235         0.0271 *  
+LUEntropy            -0.447138680  1.062614177  -0.421         0.6746    
+PedConnect           -0.005875428  0.004038676  -1.455         0.1482    
+PBN                  -0.424936269  0.600997339  -0.707         0.4808    
+ACDist                0.035684653  0.114937062   0.310         0.7567    
+ACCount               0.590636376  0.300063927   1.968         0.0512 .  
+EmpAccess             0.000000146  0.000001004   0.145         0.8846    
+C_LOS                 0.003088806  0.002165110   1.427         0.1561    
+O_Bus_LOS             0.014564607  0.002176569   6.692 0.000000000609 ***
+PropOS               -3.612231356  6.332606399  -0.570         0.5694    
+PropBach              0.997176253  1.132129000   0.881         0.3801    
+X34_censored_PropFTE -0.734714112  3.174324183  -0.231         0.8173    
+DestScore_surrogate   0.071690293  0.100659747   0.712         0.4776    
+ln_Pop_surrogate      0.366828264  0.346305480   1.059         0.2915    
+Parking              48.123096130 28.595689973   1.683         0.0948 .  
+Parkiteer             0.574663545  0.237942926   2.415         0.0171 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.173 on 129 degrees of freedom
+Multiple R-squared:  0.6206,	Adjusted R-squared:  0.5706 
+F-statistic: 12.41 on 17 and 129 DF,  p-value: < 0.00000000000000022
+

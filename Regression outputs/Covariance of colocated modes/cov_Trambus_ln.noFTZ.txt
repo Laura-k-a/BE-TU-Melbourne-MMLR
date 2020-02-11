@@ -1,0 +1,13 @@
+
+	Pearson's product-moment correlation
+
+data:  Melb.Trambus.noFTZ$ln_Bus and Melb.Trambus.noFTZ$ln_Centroid_Mode
+t = 5.5739, df = 339, p-value =
+0.00000005088
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.1893695 0.3841330
+sample estimates:
+      cor 
+0.2897479 
+

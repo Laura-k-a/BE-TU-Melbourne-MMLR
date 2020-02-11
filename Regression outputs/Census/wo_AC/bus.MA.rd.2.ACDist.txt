@@ -1,0 +1,66 @@
+
+Call:
+lm(formula = ln_Patronage ~ PropComm + Balance + LUEntropy + 
+    PedConnect + PBN + DestScore + Parkiteer + ACDist + Parking + 
+    PropUrban + PropRural + EmpAccess + C_LOS + O_Tram_LOS + 
+    O_Train_LOS + MedInc + PropOS + PropBach + censored_MeanSize + 
+    ln_Pop + ln_Emp, data = BusSample.400.rd2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.4281 -0.6947  0.1008  0.7571  4.7901 
+
+Coefficients:
+                       Estimate  Standardized    Std. Error t value
+(Intercept)       -2.2101386962  0.0000000000  0.2001404924 -11.043
+PropComm           0.5503921442  0.0653629061  0.0890615327   6.180
+Balance            0.4628435903  0.0370799037  0.1358118971   3.408
+LUEntropy          0.3729183954  0.0424962172  0.0888375017   4.198
+PedConnect         0.0100922282  0.0916393050  0.0010927026   9.236
+PBN                0.1570366016  0.0159179498  0.0816483423   1.923
+DestScore          0.0943251327  0.0981810995  0.0095087838   9.920
+Parkiteer          0.1299232850  0.0076829008  0.1772185131   0.733
+ACDist             0.0141422617  0.0260330304  0.0056337098   2.510
+Parking           -5.7695911485 -0.0030523123 18.4391263413  -0.313
+PropUrban          0.2280027603  0.0370614765  0.0827689261   2.755
+PropRural          0.0680500346  0.0046123927  0.1144699608   0.594
+EmpAccess         -0.0000019560 -0.0700922012  0.0000003055  -6.403
+C_LOS              0.0324365835  0.4690681408  0.0005991803  54.135
+O_Tram_LOS        -0.0005353352 -0.0059953643  0.0007693985  -0.696
+O_Train_LOS        0.0061814570  0.0679299989  0.0009162141   6.747
+MedInc            -0.0006163538 -0.0775126975  0.0000765614  -8.050
+PropOS             0.6526704877  0.0097676874  0.5946720219   1.098
+PropBach           0.9897770086  0.0987778427  0.1125736950   8.792
+censored_MeanSize  0.2683537601  0.0623173550  0.0390861387   6.866
+ln_Pop             0.1547137788  0.1114391834  0.0199770163   7.745
+ln_Emp             0.0844482269  0.0755502097  0.0149708982   5.641
+                              Pr(>|t|)    
+(Intercept)       < 0.0000000000000002 ***
+PropComm          0.000000000667849801 ***
+Balance                       0.000657 ***
+LUEntropy         0.000027203584942806 ***
+PedConnect        < 0.0000000000000002 ***
+PBN                           0.054469 .  
+DestScore         < 0.0000000000000002 ***
+Parkiteer                     0.463500    
+ACDist                        0.012080 *  
+Parking                       0.754364    
+PropUrban                     0.005886 ** 
+PropRural                     0.552206    
+EmpAccess         0.000000000159989485 ***
+C_LOS             < 0.0000000000000002 ***
+O_Tram_LOS                    0.486581    
+O_Train_LOS       0.000000000016006662 ***
+MedInc            0.000000000000000924 ***
+PropOS                        0.272438    
+PropBach          < 0.0000000000000002 ***
+censored_MeanSize 0.000000000007032578 ***
+ln_Pop            0.000000000000010574 ***
+ln_Emp            0.000000017410330158 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.113 on 9461 degrees of freedom
+Multiple R-squared:  0.4347,	Adjusted R-squared:  0.4335 
+F-statistic: 346.5 on 21 and 9461 DF,  p-value: < 0.00000000000000022
+

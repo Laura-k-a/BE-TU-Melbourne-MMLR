@@ -1,0 +1,27 @@
+
+Call:
+lm(formula = ln_centroid ~ Balance + PBN + ACDist + ACCount + 
+    C_LOS + O_Bus_LOS + PropBach + Parkiteer, data = Melb.Trainbus)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2.69344 -0.20693  0.03575  0.27272  1.39357 
+
+Coefficients:
+              Estimate Std. Error t value             Pr(>|t|)    
+(Intercept)  6.3325688  0.2662857  23.781 < 0.0000000000000002 ***
+Balance      0.4553754  0.6010323   0.758             0.449949    
+PBN         -0.6839093  0.2622043  -2.608             0.010101 *  
+ACDist      -0.2305688  0.0475657  -4.847          0.000003322 ***
+ACCount     -0.2193698  0.1282273  -1.711             0.089367 .  
+C_LOS        0.0042420  0.0009111   4.656          0.000007492 ***
+O_Bus_LOS    0.0046132  0.0008728   5.286          0.000000478 ***
+PropBach     1.5045654  0.3857581   3.900             0.000149 ***
+Parkiteer    0.4215944  0.1026281   4.108          0.000068070 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.5447 on 138 degrees of freedom
+Multiple R-squared:  0.6581,	Adjusted R-squared:  0.6383 
+F-statistic: 33.21 on 8 and 138 DF,  p-value: < 0.00000000000000022
+

@@ -1,0 +1,31 @@
+
+Call:
+lm(formula = ln_Patronage ~ PropComm + Balance + Parkiteer + 
+    ACDist + Parking + EmpAccess + C_LOS + O_Bus_LOS + O_Tram_LOS + 
+    censored_MeanSize + ln_Pop, data = TrainSample.800.rd3)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.92281 -0.33285  0.03722  0.31925  1.51971 
+
+Coefficients:
+                       Estimate  Standardized    Std. Error t value   Pr(>|t|)    
+(Intercept)        2.2264278000  0.0000000000  0.8701802553   2.559    0.01124 *  
+PropComm           0.6005744914  0.0947631339  0.3141135079   1.912    0.05730 .  
+Balance            1.6149303553  0.1439198714  0.5605258392   2.881    0.00439 ** 
+Parkiteer          0.4845265444  0.2206722897  0.0996595540   4.862 0.00000233 ***
+ACDist            -0.1733978326 -0.2276814343  0.0360126081  -4.815 0.00000288 ***
+Parking           34.8595485405  0.1238232595 11.4079186037   3.056    0.00255 ** 
+EmpAccess          0.0000007725  0.1416700423  0.0000003165   2.441    0.01552 *  
+C_LOS              0.0029323089  0.1696675033  0.0007319781   4.006 0.00008678 ***
+O_Bus_LOS          0.0034886103  0.2061017044  0.0008076450   4.319 0.00002451 ***
+O_Tram_LOS         0.0037032000  0.2362387587  0.0007746246   4.781 0.00000336 ***
+censored_MeanSize  0.2577054083  0.0722650062  0.1529785282   1.685    0.09361 .  
+ln_Pop             0.4676634368  0.2882461914  0.0930493300   5.026 0.00000110 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.568 on 202 degrees of freedom
+Multiple R-squared:  0.7189,	Adjusted R-squared:  0.7036 
+F-statistic: 46.97 on 11 and 202 DF,  p-value: < 0.00000000000000022
+

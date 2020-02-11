@@ -1,0 +1,9 @@
+
+	Bartlett's Test of Sphericity
+
+Call: bart_spher(x = cormat.Allmodes.800, use = c("complete.obs"))
+
+     X2 = 720032.105
+     df = 595
+p-value < 2.22e-16
+

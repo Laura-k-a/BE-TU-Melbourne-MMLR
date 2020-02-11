@@ -1,0 +1,15 @@
+
+Type II MANOVA Tests: Pillai test statistic
+                     Df test stat approx F num Df den Df                Pr(>F)    
+PropComm              1   0.02852    4.784      2    326             0.0089551 ** 
+LUEntropy             1   0.02122    3.535      2    326             0.0302937 *  
+EmpAccess             1   0.03823    6.478      2    326             0.0017415 ** 
+C_LOS                 1   0.34458   85.697      2    326 < 0.00000000000000022 ***
+O_Bus_LOS             1   0.36413   93.342      2    326 < 0.00000000000000022 ***
+O_Train_LOS           1   0.02310    3.854      2    326             0.0221651 *  
+PropOS                1   0.02648    4.434      2    326             0.0125972 *  
+PropBach              1   0.04422    7.542      2    326             0.0006282 ***
+X34_censored_PropFTE  1   0.03475    5.867      2    326             0.0031379 ** 
+ln_Pop_surrogate      1   0.03924    6.657      2    326             0.0014667 ** 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

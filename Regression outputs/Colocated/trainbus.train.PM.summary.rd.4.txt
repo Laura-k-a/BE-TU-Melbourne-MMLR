@@ -1,0 +1,31 @@
+
+Call:
+lm(formula = ln_centroid ~ Balance + PedConnect + PBN + ACDist + 
+    ACCount + EmpAccess + C_LOS + O_Bus_LOS + ln_Pop_surrogate + 
+    Parking + Parkiteer, data = Melb.Trainbus.rd4)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.39669 -0.20775 -0.00167  0.25562  1.01612 
+
+Coefficients:
+                      Estimate  Standardized    Std. Error t value     Pr(>|t|)    
+(Intercept)       5.0213619755  0.0000000000  0.8371332999   5.998 0.0000000188 ***
+Balance           0.9685237902  0.1173970144  0.5265368946   1.839      0.06815 .  
+PedConnect       -0.0017907855 -0.1128888630  0.0011875200  -1.508      0.13400    
+PBN              -0.4687066009 -0.1313983199  0.2033774114  -2.305      0.02279 *  
+ACDist           -0.0317375023 -0.0570879473  0.0471258344  -0.673      0.50186    
+ACCount           0.1042115262  0.0782005874  0.1061151868   0.982      0.32791    
+EmpAccess         0.0000009595  0.2374478193  0.0000003064   3.131      0.00216 ** 
+C_LOS             0.0032341580  0.2656738586  0.0007188641   4.499 0.0000150612 ***
+O_Bus_LOS         0.0039919131  0.3876963053  0.0006524223   6.119 0.0000000105 ***
+ln_Pop_surrogate  0.2258344082  0.1899765949  0.1085171739   2.081      0.03940 *  
+Parking          27.5182624145  0.1587186565  9.6776813941   2.843      0.00519 ** 
+Parkiteer         0.3664026379  0.2781859277  0.0818182327   4.478 0.0000163828 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.4032 on 129 degrees of freedom
+Multiple R-squared:  0.6541,	Adjusted R-squared:  0.6246 
+F-statistic: 22.18 on 11 and 129 DF,  p-value: < 0.00000000000000022
+

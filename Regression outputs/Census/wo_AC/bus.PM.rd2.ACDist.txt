@@ -1,0 +1,37 @@
+
+Call:
+lm(formula = ln_Patronage ~ PropComm + Balance + LUEntropy + 
+    PedConnect + PBN + DestScore + ACDist + PropUrban + EmpAccess + 
+    C_LOS + O_Train_LOS + MedInc + PropBach + censored_MeanSize + 
+    ln_Pop + ln_Emp, data = BusSample.400.rd2)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.4720 -0.6954  0.1021  0.7574  4.8141 
+
+Coefficients:
+                       Estimate    Std. Error t value             Pr(>|t|)    
+(Intercept)       -2.2357311197  0.1984408954 -11.266 < 0.0000000000000002 ***
+PropComm           0.5638812044  0.0880662738   6.403  0.00000000015967400 ***
+Balance            0.4561254529  0.1356906613   3.362             0.000778 ***
+LUEntropy          0.3639775939  0.0883026831   4.122  0.00003789139805586 ***
+PedConnect         0.0102147104  0.0010856570   9.409 < 0.0000000000000002 ***
+PBN                0.1578132256  0.0815099098   1.936             0.052882 .  
+DestScore          0.0935753231  0.0094344611   9.918 < 0.0000000000000002 ***
+ACDist             0.0135928647  0.0056142181   2.421             0.015490 *  
+PropUrban          0.2242674846  0.0824682172   2.719             0.006551 ** 
+EmpAccess         -0.0000020314  0.0000002924  -6.946  0.00000000000400058 ***
+C_LOS              0.0325370125  0.0005866901  55.459 < 0.0000000000000002 ***
+O_Train_LOS        0.0064831940  0.0007373898   8.792 < 0.0000000000000002 ***
+MedInc            -0.0006325572  0.0000751581  -8.416 < 0.0000000000000002 ***
+PropBach           0.9869373345  0.1123564137   8.784 < 0.0000000000000002 ***
+censored_MeanSize  0.2796129548  0.0379457192   7.369  0.00000000000018664 ***
+ln_Pop             0.1567689609  0.0197820858   7.925  0.00000000000000254 ***
+ln_Emp             0.0866040657  0.0148545447   5.830  0.00000000571940505 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.112 on 9466 degrees of freedom
+Multiple R-squared:  0.4346,	Adjusted R-squared:  0.4336 
+F-statistic: 454.7 on 16 and 9466 DF,  p-value: < 0.00000000000000022
+
